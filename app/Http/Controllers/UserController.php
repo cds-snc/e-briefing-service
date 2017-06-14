@@ -2,17 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreTrip;
-use App\Trip;
+use App\User;
 use Illuminate\Http\Request;
 
-class TripController extends Controller
+class UserController extends Controller
 {
-    public function __construct()
-    {
-        return $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -20,8 +14,8 @@ class TripController extends Controller
      */
     public function index()
     {
-        return view('trips.index', [
-            'trips' => Trip::all()
+        return view('users.index', [
+            'users' => User::all()
         ]);
     }
 
@@ -32,35 +26,29 @@ class TripController extends Controller
      */
     public function create()
     {
-        return view('trips.create');
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param StoreTrip|Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreTrip $request)
+    public function store(Request $request)
     {
-        Trip::create([
-            'name' => $request->name,
-            'description' => $request->description
-        ]);
-
-        return redirect()->route('trips.index')->with('success', __('Trip created'));
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param Trip $trip
+     * @param  int  $id
      * @return \Illuminate\Http\Response
-     * @internal param int $id
      */
-    public function show(Trip $trip)
+    public function show($id)
     {
-        return $this->render('trips.view', $trip);
+        //
     }
 
     /**
@@ -77,19 +65,13 @@ class TripController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param StoreTrip|Request $request
-     * @param Trip $trip
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
-     * @internal param int $id
      */
-    public function update(StoreTrip $request, Trip $trip)
+    public function update(Request $request, $id)
     {
-        $trip->update([
-            'name' => $request->name,
-            'description' => $request->description
-        ]);
-
-        return redirect()->route('trips.index')->with('success', __('Trip updated'));
+        //
     }
 
     /**

@@ -10,4 +10,13 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    protected function render($template, $objects = [])
+    {
+        if(request()->ajax()) {
+            return $objects;
+        }
+
+        return view($template, $objects);
+    }
 }
