@@ -22,7 +22,7 @@ class CreatePeopleTable extends Migration
             $table->string('telephone')->nullable();
             $table->string('title')->nullable();
             $table->string('image')->nullable();
-            $table->text('body');
+            $table->text('body')->nullable();
             $table->timestamps();
         });
     }

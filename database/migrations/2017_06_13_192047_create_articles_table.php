@@ -17,7 +17,7 @@ class CreateArticlesTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('trip_id');
             $table->string('title');
-            $table->text('body');
+            $table->text('body')->nullable();
             $table->integer('sort_id');
             $table->timestamps();
         });

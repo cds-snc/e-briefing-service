@@ -24,8 +24,8 @@ class CreateEventsTable extends Migration
             $table->string('location_name')->nullable();
             $table->string('location_address')->nullable();
             $table->string('location_postal')->nullable();
-            $table->text('description');
-            $table->text('body');
+            $table->text('description')->nullable();
+            $table->text('body')->nullable();
             $table->boolean('is_meal');
             $table->timestamps();
         });
