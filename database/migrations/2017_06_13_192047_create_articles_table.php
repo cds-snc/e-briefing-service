@@ -18,6 +18,7 @@ class CreateArticlesTable extends Migration
             $table->unsignedInteger('trip_id');
             $table->string('title');
             $table->text('body');
+            $table->integer('sort_id');
             $table->timestamps();
         });
     }
