@@ -17,4 +17,9 @@ class Document extends Model
     {
         return $this->belongsToMany(Article::class);
     }
+
+    public function documentType()
+    {
+        return $this->belongsTo(DocumentType::class);
+    }
 }
