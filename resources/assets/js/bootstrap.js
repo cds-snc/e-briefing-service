@@ -9,8 +9,6 @@ window._ = require('lodash');
 
 try {
     window.$ = window.jQuery = require('jquery');
-
-    require('bootstrap-sass');
 } catch (e) {}
 
 /**
@@ -18,6 +16,11 @@ try {
  * to our Laravel back-end. This library automatically handles sending the
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
+
+/**
+ * Include the es6-promis polyfill for IE11 support
+ */
+require('es6-promise').polyfill();
 
 window.axios = require('axios');
 
