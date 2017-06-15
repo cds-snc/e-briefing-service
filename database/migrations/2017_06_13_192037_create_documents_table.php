@@ -20,6 +20,7 @@ class CreateDocumentsTable extends Migration
             $table->string('name');
             $table->string('file');
             $table->integer('sort_id');
+            $table->boolean('is_protected');
             $table->timestamps();
         });
     }

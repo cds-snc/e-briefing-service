@@ -19,6 +19,7 @@ class CreateArticlesTable extends Migration
             $table->string('title');
             $table->text('body')->nullable();
             $table->integer('sort_id');
+            $table->boolean('is_protected');
             $table->timestamps();
         });
     }
