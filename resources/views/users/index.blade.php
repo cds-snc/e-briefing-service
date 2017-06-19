@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="container">
-        <h1>{{ __('Users') }}
-            <a href="{{ route('users.create') }}" class="btn btn-default pull-right">Create a User</a>
+        <h1 class="title">{{ __('Users') }}
+            <a href="{{ route('users.create') }}" class="button pull-right">Create a User</a>
         </h1>
 
         @unless($users->count())

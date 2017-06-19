@@ -56,12 +56,16 @@
         <!-- main content -->
         <section class="section">
             <div class="container">
+
+
+
                 @yield('content')
             </div>
         </section>
     </div>
 
     <!-- Scripts -->
+    <script src="/api/lang/trans.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     @stack('scripts')
 </body>

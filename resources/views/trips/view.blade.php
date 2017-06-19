@@ -2,6 +2,15 @@
 
 @section('content')
     <div class="container">
-        <h1>Manage Trip</h1>
+        <div class="columns">
+            <div class="column is-3">
+                @include('trips._sidebar', ['trip' => $trip])
+            </div>
+
+            <div class="column">
+                <h1 class="title">{{ $trip->name }}</h1>
+                <p>{{ $trip->description }}</p>
+            </div>
+        </div>
     </div>
 @endsection

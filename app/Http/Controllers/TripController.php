@@ -60,18 +60,22 @@ class TripController extends Controller
      */
     public function show(Trip $trip)
     {
-        return $this->render('trips.view', $trip);
+        return view('trips.view', [
+            'trip' => $trip
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param Trip $trip
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Trip $trip)
     {
-        //
+        return view('trips.edit', [
+            'trip' => $trip
+        ]);
     }
 
     /**
