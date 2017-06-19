@@ -15,7 +15,26 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.prototype.__ = (string, args) => {
+    var lang = 'en';
+
+    if(_.has(window.i18n, lang)) {
+        let value = _.get(window.i18n[lang], string);
+
+        if(value) {
+            _.eachRight(args, (paramVal, paramKey) => {
+                value = _.replace(value, `:${paramKey}`, paramVal);
+            });
+            return value;
+        }
+        return string;
+    }
+    return string;
+}
+
+
 Vue.component('example', require('./components/Example.vue'));
+Vue.component('create-trip', require('./components/trips/Create.vue'));
 
 const app = new Vue({
     el: '#app'
