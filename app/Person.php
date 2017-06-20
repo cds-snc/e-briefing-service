@@ -17,4 +17,9 @@ class Person extends Model
     {
         return $this->belongsToMany(Event::class);
     }
+
+    public function getNameAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
 }
