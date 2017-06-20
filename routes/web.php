@@ -22,5 +22,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('users', 'UserController');
 Route::resource('trips', 'TripController');
 
+Route::resource('days', 'DayController', ['only' => [
+    'edit', 'update', 'destroy'
+]]);
+
 Route::resource('trips.days', 'TripDaysController');
 Route::resource('days.events', 'DayEventsController');

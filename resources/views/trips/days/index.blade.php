@@ -25,7 +25,7 @@
                                 </div>
                                 <footer class="card-footer">
                                     <a href="{{ route('days.events.index', $day) }}" class="card-footer-item">Events</a>
-                                    <a href="" class="card-footer-item">Edit</a>
+                                    <a href="{{ route('days.edit', $day) }}" class="card-footer-item">Edit</a>
                                     <a href="" class="card-footer-item">Delete</a>
                                 </footer>
                             </div>
