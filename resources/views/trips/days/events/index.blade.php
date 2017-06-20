@@ -15,10 +15,26 @@
                 No Events have been added to this day yet!
             @endunless
 
-            @foreach($day->events as $event)
+            @foreach($events as $event)
                 <div class="card">
                     <div class="card-content">
                         <h3 class="title is-4">{{ $event->title }}</h3>
+                        <h4 class="subtitle is-5">{{ $event->type }}</h4>
+                        <p>{{ $event->time_from }}
+                            @if($event->time_to)
+                                - {{ $event->time_to }}
+                            @endif
+                        </p>
+                        <p>{{ $event->description }}</p>
+                        @if($event->is_meal)
+                            <span class="fa fa-cutlery"></span>
+                        @endif
+
+                        <p>
+                            <a href="{{ route('days.events.edit', ['day' => $day, 'event' => $event]) }}">Edit</a> |
+                            <a href="">Delete</a>
+                        </p>
+
                     </div>
                 </div>
             @endforeach

@@ -8,12 +8,15 @@
             </div>
 
             <div class="column">
-                <h1 class="title">{{ __('Edit a Day') }}</h1>
+                <h1 class="title">{{ $day->name }} : Edit an Event</h1>
 
-                <form action="{{ route('days.update', $day) }}" method="POST">
+                @include('layouts.notifications')
+
+                <form action="{{ route('days.events.update', ['day' => $day, 'event' => $event]) }}" method="POST">
                     <input type="hidden" name="_method" value="PUT">
                     {{ csrf_field() }}
-                    @include('trips.days._form')
+
+                    @include('trips.days.events._form')
 
                     <button type="submit" class="button is-primary">Submit</button>
                 </form>

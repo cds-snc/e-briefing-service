@@ -12,18 +12,7 @@
 
                 <form action="{{ route('trips.days.store', $trip) }}" method="POST">
                     {{ csrf_field() }}
-                    <div class="field">
-                        <label class="label" for="name">{{ __('Name') }}</label>
-                        <p class="control">
-                            <input type="text" class="input" name="name" id="name" value="{{ old('name') }}">
-                        </p>
-                    </div>
-                    <div class="field">
-                        <label class="label" for="date">{{ __('Date') }}</label>
-                        <p class="control">
-                            <input type="date" class="input" name="date" value="{{ old('date') }}">
-                        </p>
-                    </div>
+                    @include('trips.days._form')
 
                     <button type="submit" class="button is-primary">Submit</button>
                 </form>

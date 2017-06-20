@@ -16,7 +16,7 @@
                 @endunless
 
                 <div class="days">
-                    @foreach($trip->days as $day)
+                    @foreach($days as $day)
                         <div class="day">
                             <div class="card">
                                 <div class="card-content">

@@ -26,5 +26,7 @@ Route::resource('days', 'DayController', ['only' => [
     'edit', 'update', 'destroy'
 ]]);
 
+/* Route::resource('events', 'EventController'); */
+
 Route::resource('trips.days', 'TripDaysController');
 Route::resource('days.events', 'DayEventsController');
