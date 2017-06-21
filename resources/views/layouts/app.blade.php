@@ -22,10 +22,10 @@
                     <a class="nav-item" href="{{ url('/') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
-                    <a class="nav-item" href="{{ route('trips.index') }}">
+                    <a class="nav-item is-tab" href="{{ route('trips.index') }}">
                         Trips
                     </a>
-                    <a class="nav-item" href="{{ route('users.index') }}">
+                    <a class="nav-item is-tab" href="{{ route('users.index') }}">
                         Users
                     </a>
                 </div>
@@ -40,7 +40,9 @@
                         <a class="nav-item is-tab" href="{{ url('/login') }}">Login</a>
                         <a class="nav-item is-tab" href="{{ url('/register') }}">Register</a>
                     @else
-                        <a class="nav-item is-tab" href="{{ url('/logout') }}"
+                        <div class="nav-item">{{ auth()->user()->name }}</div>
+
+                        <a class="nav-item" href="{{ url('/logout') }}"
                            onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
                             Logout</a>
@@ -56,9 +58,6 @@
         <!-- main content -->
         <section class="section">
             <div class="container">
-
-
-
                 @yield('content')
             </div>
         </section>
