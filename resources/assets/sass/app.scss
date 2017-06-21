@@ -1,6 +1,10 @@
 @import "node_modules/bulma/bulma";
 @import "node_modules/font-awesome/css/font-awesome";
 
+.flash-message {
+  margin-bottom: 20px;
+}
+
 .days .day {
   width: 300px;
   float: left;

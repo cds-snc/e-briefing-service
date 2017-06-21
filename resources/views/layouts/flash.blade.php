@@ -1,7 +1,7 @@
 <div class="flash-message">
     @foreach (['danger', 'warning', 'success', 'info'] as $msg)
         @if(session()->has($msg))
-            <p class="notification is-{{ $msg }}">{{ Session::get($msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+            <p class="notification is-{{ $msg }}">{{ Session::get($msg) }}</p>
         @endif
     @endforeach
 
