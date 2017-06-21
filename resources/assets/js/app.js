@@ -10,11 +10,8 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 /**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
+ * Lang Helper
  */
-
 Vue.prototype.__ = (string, args) => {
     var lang = 'en';
 
@@ -30,8 +27,21 @@ Vue.prototype.__ = (string, args) => {
         return string;
     }
     return string;
-}
+};
 
+var tinymce = require('tinymce/tinymce');
+require('tinymce/themes/modern/theme');
+
+tinymce.init({
+    selector: '.wysiwyg',
+    menubar: false
+});
+
+/**
+ * Next, we will create a fresh Vue application instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
 
 Vue.component('example', require('./components/Example.vue'));
 Vue.component('create-trip', require('./components/trips/Create.vue'));

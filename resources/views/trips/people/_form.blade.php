@@ -34,6 +34,6 @@
 <div class="field">
     <label class="label" for="body">Biography</label>
     <p class="control">
-        <textarea class="textarea" id="body" name="body">{{ old('body', $person->body) }}</textarea>
+        <textarea class="textarea wysiwyg" id="body" name="body">{{ old('body', $person->body) }}</textarea>
     </p>
 </div>

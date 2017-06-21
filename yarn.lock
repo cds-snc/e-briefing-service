@@ -5407,6 +5407,10 @@ timers-browserify@^2.0.2:
   dependencies:
     setimmediate "^1.0.4"
 
+tinymce@^4.6.4:
+  version "4.6.4"
+  resolved "https://registry.yarnpkg.com/tinymce/-/tinymce-4.6.4.tgz#7415559f266de24bea7e69d59e43e1e61e7d11a4"
+
 to-absolute-glob@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/to-absolute-glob/-/to-absolute-glob-0.1.1.tgz#1cdfa472a9ef50c239ee66999b662ca0eb39937f"
