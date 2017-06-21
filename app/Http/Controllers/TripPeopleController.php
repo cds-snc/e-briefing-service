@@ -45,13 +45,17 @@ class TripPeopleController extends Controller
      */
     public function store(Trip $trip, StorePerson $request)
     {
+        $file = $request->file('image');
+        $filename = $file->store('public/photos');
+
         $trip->people()->create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'email' => $request->email,
             'telephone' => $request->telephone,
             'title' => $request->title,
-            'body' => $request->body
+            'body' => $request->body,
+            'image' => $filename,
         ]);
 
         return redirect()->route('trips.people.index', $trip)->with('success', 'Person saved!');
@@ -100,6 +104,15 @@ class TripPeopleController extends Controller
             'title' => $request->title,
             'body' => $request->body
         ]);
+
+        if($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = $file->store('public/documents');
+
+            $person->update([
+                'image' => $filename
+            ]);
+        }
 
         return redirect()->route('trips.people.index', $trip)->with('success', 'Person saved!');
     }

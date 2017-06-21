@@ -15,6 +15,18 @@
                 <form action="{{ route('trips.people.update', ['trip' => $trip, 'person' => $person]) }}" method="POST">
                     {{ method_field('PUT') }}
                     {{ csrf_field() }}
+
+                    @if($person->image)
+                        {{ $person->image }}
+                    @endif
+
+                    <div class="field">
+                        <label class="label" for="image">{{ __('Photo') }}</label>
+                        <p class="control">
+                            <input type="file" name="image" id="image">
+                        </p>
+                    </div>
+
                     @include('trips.people._form')
 
                     <button type="submit" class="button is-primary">Submit</button>

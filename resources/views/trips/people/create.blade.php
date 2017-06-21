@@ -14,6 +14,14 @@
 
                 <form action="{{ route('trips.people.store', $trip) }}" method="POST">
                     {{ csrf_field() }}
+
+                    <div class="field">
+                        <label class="label" for="image">{{ __('Photo') }}</label>
+                        <p class="control">
+                            <input type="file" name="image" id="image">
+                        </p>
+                    </div>
+
                     @include('trips.people._form')
 
                     <button type="submit" class="button is-primary">Submit</button>
