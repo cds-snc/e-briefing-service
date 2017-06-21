@@ -14,7 +14,7 @@
 
                 @include('layouts.flash')
 
-                @unless($trip->days->count())
+                @unless($trip->articles->count())
                     There are no Articles added to this Trip yet!
                 @endunless
 
