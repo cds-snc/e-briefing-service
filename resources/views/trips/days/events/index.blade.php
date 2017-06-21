@@ -11,6 +11,8 @@
                 <a href="{{ route('days.events.create', $day) }}" class="button pull-right">Add an Event</a>
             </h1>
 
+            @include('layouts.flash')
+
             @unless($day->events->count())
                 No Events have been added to this day yet!
             @endunless

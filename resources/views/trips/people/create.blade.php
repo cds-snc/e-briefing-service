@@ -10,6 +10,8 @@
             <div class="column">
                 <h1 class="title">{{ __('Add a Person') }}</h1>
 
+                @include('layouts.flash')
+
                 <form action="{{ route('trips.people.store', $trip) }}" method="POST">
                     {{ csrf_field() }}
                     @include('trips.people._form')

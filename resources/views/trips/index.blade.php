@@ -6,7 +6,7 @@
             <a href="{{ route('trips.create') }}" class="button pull-right">{{ __('Create a Trip') }}</a>
         </h1>
 
-        @include('layouts.notifications')
+        @include('layouts.flash')
 
         @unless($trips->count())
             {{ __('There are currently no trips defined') }}
@@ -29,7 +29,7 @@
                                     </span>
                                     <span>{{ __('edit') }}</span>
                                 </a>
-                                <a href="{{ route('trips.show', $trip) }}" class="button">
+                                <a href="{{ route('trips.days.index', $trip) }}" class="button">
                                     <span class="icon">
                                         <i class="fa fa-cogs"></i>
                                     </span>

@@ -4,6 +4,8 @@
     <div class="container">
         <h1 class="title">{{ __('Create a Trip') }}</h1>
 
+        @include('layouts.flash')
+
         <form action="{{ route('trips.store') }}" method="POST">
             {{ csrf_field() }}
             @include('trips._form')

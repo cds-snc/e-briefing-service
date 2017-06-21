@@ -10,6 +10,8 @@
             <div class="column">
                 <h1 class="title">{{ __('Edit a Person') }}</h1>
 
+                @include('layouts.flash')
+
                 <form action="{{ route('trips.people.update', ['trip' => $trip, 'person' => $person]) }}" method="POST">
                     <input type="hidden" name="_method" value="PUT">
                     {{ csrf_field() }}

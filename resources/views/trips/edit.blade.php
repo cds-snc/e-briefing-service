@@ -4,6 +4,8 @@
     <div class="container">
         <h1 class="title">{{ __('Edit a Trip') }}</h1>
 
+        @include('layouts.flash')
+
         <form action="{{ route('trips.update', $trip) }}" method="POST">
             <input type="hidden" name="_method" value="PUT">
             {{ csrf_field() }}

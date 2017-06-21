@@ -11,6 +11,9 @@
                 <h1 class="title">{{ $trip->name }}
                     <a href="{{ route('trips.days.create', $trip) }}" class="button pull-right">Add a Day</a>
                 </h1>
+
+                @include('layouts.flash')
+                
                 @unless($trip->days->count())
                     There are no Days added to this Trip yet!
                 @endunless

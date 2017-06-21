@@ -10,7 +10,7 @@
             <div class="column">
                 <h1 class="title">{{ $day->name }} : Edit an Event</h1>
 
-                @include('layouts.notifications')
+                @include('layouts.flash')
 
                 <form action="{{ route('days.events.update', ['day' => $day, 'event' => $event]) }}" method="POST">
                     <input type="hidden" name="_method" value="PUT">

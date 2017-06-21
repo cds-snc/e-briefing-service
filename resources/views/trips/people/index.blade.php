@@ -11,6 +11,9 @@
                 <h1 class="title">{{ $trip->name }}
                     <a href="{{ route('trips.people.create', $trip) }}" class="button pull-right">Add a Person</a>
                 </h1>
+
+                @include('layouts.flash')
+
                 @unless($trip->people->count())
                     There are no People added to this Trip yet!
                 @endunless
