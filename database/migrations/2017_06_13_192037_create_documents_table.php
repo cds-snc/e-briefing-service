@@ -16,7 +16,7 @@ class CreateDocumentsTable extends Migration
         Schema::create('documents', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('trip_id');
-            $table->unsignedInteger('document_type_id');
+            $table->text('document_type');
             $table->string('name');
             $table->string('file');
             $table->integer('sort_id');
