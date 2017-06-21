@@ -8,7 +8,7 @@
             </div>
 
             <div class="column">
-                <h1 class="title">{{ $trip->name }}
+                <h1 class="title">{{ $trip->name }} People
                     <a href="{{ route('trips.people.create', $trip) }}" class="button pull-right">Add a Person</a>
                 </h1>
 
