@@ -13,7 +13,7 @@
                 @include('layouts.flash')
 
                 <form action="{{ route('days.update', $day) }}" method="POST">
-                    <input type="hidden" name="_method" value="PUT">
+                    {{ method_field('PUT') }}
                     {{ csrf_field() }}
                     @include('trips.days._form')
 
