@@ -29,5 +29,6 @@ Route::resource('days', 'DayController', ['only' => [
 Route::resource('trips.people', 'TripPeopleController');
 Route::resource('trips.days', 'TripDaysController');
 Route::resource('trips.articles', 'TripArticlesController');
+Route::resource('trips.documents', 'TripDocumentsController');
 
 Route::resource('days.events', 'DayEventsController');
