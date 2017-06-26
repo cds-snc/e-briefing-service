@@ -32,3 +32,7 @@ Route::resource('trips.articles', 'TripArticlesController');
 Route::resource('trips.documents', 'TripDocumentsController');
 
 Route::resource('days.events', 'DayEventsController');
+
+Route::resource('events', 'EventController', ['only' => [
+    'show', 'edit', 'update', 'destroy'
+]]);

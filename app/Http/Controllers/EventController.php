@@ -2,38 +2,31 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Day;
 use App\Event;
 use App\Http\Requests\StoreEvent;
 use Illuminate\Http\Request;
 
-class DayEventsController extends Controller
+class EventController extends Controller
 {
-    public function __construct()
+    public function show(Event $event)
     {
-        return $this->middleware('auth');
-    }
-
-    public function index(Day $day)
-    {
-        return view('trips.days.events.index', [
-            'day' => $day,
-            'events' => $day->events()->orderBy('time_from')->get()
+        return view('trips.days.events.show', [
+            'event' => $event,
+            'people' => $event->trip->people->pluck('name', 'id')
         ]);
     }
 
-    public function create(Day $day)
+    public function edit(Event $event)
     {
-        return view('trips.days.events.create', [
-            'day' => $day,
-            'event' => new Event()
+        return view('trips.days.events.edit', [
+            'event' => $event,
+            'people' => $event->trip->people->pluck('name', 'id')
         ]);
     }
 
-    public function store(Day $day, StoreEvent $request)
+    public function update(Event $event, StoreEvent $request)
     {
-        $day->events()->create([
+        $event->update([
             'title' => $request->title,
             'type' => $request->type,
             'time_from' => $request->time_from,
@@ -46,8 +39,6 @@ class DayEventsController extends Controller
             'is_meal' => $request->has('is_meal')
         ]);
 
-        return redirect()->route('days.events.index', $day)->with('success', 'Event saved!');
+        return redirect()->route('events.show', $event)->with('success', 'Event saved!');
     }
-
-
 }

@@ -13,6 +13,11 @@ class Event extends Model
         return $this->belongsTo(Day::class);
     }
 
+    public function getTripAttribute()
+    {
+        return $this->day->trip;
+    }
+
     public function participants()
     {
         return $this->belongsToMany(Person::class);
