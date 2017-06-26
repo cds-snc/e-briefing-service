@@ -19,14 +19,14 @@
         <nav class="nav has-shadow">
             <div class="container">
                 <div class="nav-left">
-                    <a class="nav-item" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                    <a href="{{ url('/') }}">
+                        <img class="nav-logo" src="/images/e-brief-logo.png" alt="E Briefing App Logo">
                     </a>
                     <a class="nav-item is-tab" href="{{ route('trips.index') }}">
                         Trips
                     </a>
                     <a class="nav-item is-tab" href="{{ route('users.index') }}">
-                        Users
+                        User Management
                     </a>
                 </div>
                 <span class="nav-toggle">
