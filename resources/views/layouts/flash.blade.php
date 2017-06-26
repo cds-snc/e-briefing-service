@@ -1,11 +1,13 @@
-<div class="flash-message">
-    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-        @if(session()->has($msg))
+@foreach (['danger', 'warning', 'success', 'info'] as $msg)
+    @if(session()->has($msg))
+        <div class="flash-message">
             <p class="notification is-{{ $msg }}">{{ Session::get($msg) }}</p>
-        @endif
-    @endforeach
+        </div>
+    @endif
+@endforeach
 
-    @if(session()->has('errors'))
+@if(session()->has('errors'))
+    <div class="flash-message">
         <div class="notification is-warning">
             <ul>
                 @foreach(session('errors')->all() as $error)
@@ -13,5 +15,5 @@
                 @endforeach
             </ul>
         </div>
-    @endif
-</div>
+    </div>
+@endif

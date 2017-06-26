@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="columns">
-            <div class="column is-3">
+            <div class="column is-2">
                 @include('trips._sidebar', ['trip' => $day->trip])
             </div>
 

@@ -33,7 +33,7 @@
                         @endif
 
                         <p>
-                            <a href="{{ route('days.events.edit', ['day' => $day, 'event' => $event]) }}">Manage</a> |
+                            <a href="{{ route('events.show', ['event' => $event]) }}">Manage</a> |
                             <a href="">Delete</a>
                         </p>
 
