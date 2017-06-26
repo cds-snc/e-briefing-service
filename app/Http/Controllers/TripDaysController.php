@@ -9,6 +9,11 @@ use App\Trip;
 
 class TripDaysController extends Controller
 {
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
+
     public function index(Trip $trip)
     {
         return view('trips.days.index', [

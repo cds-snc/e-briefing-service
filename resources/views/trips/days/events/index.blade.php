@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="columns">
-        <div class="column is-3">
+        <div class="column is-2">
             @include('trips._sidebar', ['trip' => $day->trip])
         </div>
 
@@ -33,7 +33,7 @@
                         @endif
 
                         <p>
-                            <a href="{{ route('days.events.edit', ['day' => $day, 'event' => $event]) }}">Edit</a> |
+                            <a href="{{ route('days.events.edit', ['day' => $day, 'event' => $event]) }}">Manage</a> |
                             <a href="">Delete</a>
                         </p>
 
@@ -42,4 +42,14 @@
             @endforeach
         </div>
     </div>
+
+    <div class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+
+        </div>
+        <button class="modal-close"></button>
+    </div>
+
+
 @endsection

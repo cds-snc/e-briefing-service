@@ -12,12 +12,12 @@
 
                 @include('layouts.flash')
 
-                <form action="{{ route('trips.people.update', ['trip' => $trip, 'person' => $person]) }}" method="POST">
+                <form action="{{ route('trips.people.update', ['trip' => $trip, 'person' => $person]) }}" method="POST" enctype="multipart/form-data">
                     {{ method_field('PUT') }}
                     {{ csrf_field() }}
 
                     @if($person->image)
-                        {{ $person->image }}
+                        <img src="{{ url($person->image) }}" class="person-photo">
                     @endif
 
                     <div class="field">

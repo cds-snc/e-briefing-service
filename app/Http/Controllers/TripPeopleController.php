@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class TripPeopleController extends Controller
 {
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -46,7 +51,7 @@ class TripPeopleController extends Controller
     public function store(Trip $trip, StorePerson $request)
     {
         $file = $request->file('image');
-        $filename = $file->store('public/photos');
+        $filename = $file->store('photos', 'public');
 
         $trip->people()->create([
             'first_name' => $request->first_name,
@@ -107,7 +112,7 @@ class TripPeopleController extends Controller
 
         if($request->hasFile('image')) {
             $file = $request->file('image');
-            $filename = $file->store('public/documents');
+            $filename = $file->store('photos', 'public');
 
             $person->update([
                 'image' => $filename

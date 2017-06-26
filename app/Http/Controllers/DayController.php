@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class DayController extends Controller
 {
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
+
     public function edit(Day $day)
     {
         return view('trips.days.edit', [

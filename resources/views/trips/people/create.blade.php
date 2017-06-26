@@ -12,7 +12,7 @@
 
                 @include('layouts.flash')
 
-                <form action="{{ route('trips.people.store', $trip) }}" method="POST">
+                <form action="{{ route('trips.people.store', $trip) }}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
 
                     <div class="field">

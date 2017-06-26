@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 
 class DayEventsController extends Controller
 {
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
+
     public function index(Day $day)
     {
         return view('trips.days.events.index', [
@@ -48,7 +53,8 @@ class DayEventsController extends Controller
     {
         return view('trips.days.events.edit', [
             'day' => $day,
-            'event' => $event
+            'event' => $event,
+            'people' => $day->trip->people->pluck('name', 'id')
         ]);
     }
 
