@@ -44,8 +44,12 @@ tinymce.init({
  */
 
 Vue.component('example', require('./components/Example.vue'));
-Vue.component('create-trip', require('./components/trips/Create.vue'));
+
+Vue.component('add-participant-modal', require('./components/AddParticipantModal.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data: {
+        isParticipantModalActive: false
+    }
 });
