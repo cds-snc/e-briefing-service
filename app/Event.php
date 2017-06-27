@@ -20,12 +20,12 @@ class Event extends Model
 
     public function participants()
     {
-        return $this->belongsToMany(Person::class);
+        return $this->belongsToMany(Person::class)->wherePivot('is_participant', 1);
     }
 
     public function contacts()
     {
-        return $this->belongsToMany(Person::class)->where('pivot.is_contact', 1);
+        return $this->belongsToMany(Person::class)->wherePivot('is_contact', 1);
     }
 
     public function documents()
