@@ -14,7 +14,9 @@
             @include('layouts.flash')
 
             @unless($day->events->count())
-                No Events have been added to this day yet!
+                <div class="notification is-info">
+                    No Events have been added to this day yet!
+                </div>
             @endunless
 
             @foreach($events as $event)
