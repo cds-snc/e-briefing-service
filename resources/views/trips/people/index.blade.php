@@ -21,9 +21,18 @@
                 @foreach($people as $person)
                     <div class="card">
                         <div class="card-content">
-                            <h3 class="title is-3">{{ $person->name }}</h3>
-                            <p><strong>{{ $person->title or 'no title' }}</strong> | {{ $person->telephone }}</p>
-                            <p><a href="{{ route('trips.people.edit', ['trip' => $trip, 'person' => $person]) }}">Edit</a> | <a href="">Delete</a></p>
+                            <div class="columns">
+                                @if($person->image)
+                                    <div class="column is-3">
+                                        <img src="{{ url($person->image) }}" class="person-photo">
+                                    </div>
+                                @endif
+                                <div class="column">
+                                    <h3 class="title is-3">{{ $person->name }}</h3>
+                                    <p><strong>{{ $person->title or 'no title' }}</strong> | {{ $person->telephone }}</p>
+                                    <p><a href="{{ route('trips.people.edit', ['trip' => $trip, 'person' => $person]) }}">Edit</a> | <a href="">Delete</a></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 @endforeach
