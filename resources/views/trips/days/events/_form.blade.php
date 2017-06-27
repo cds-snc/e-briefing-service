@@ -57,7 +57,7 @@
 <div class="field">
     <label class="label" for="body">Body</label>
     <p class="control">
-        <textarea class="textarea" id="body" name="body">{{ old('body', $event->body) }}</textarea>
+        <textarea class="textarea wysiwyg" id="body" name="body">{{ old('body', $event->body) }}</textarea>
     </p>
 </div>
 

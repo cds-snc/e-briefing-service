@@ -42,7 +42,7 @@
                             @endif
                             @if($event->body)
                                 <dt>Body</dt>
-                                <dd>{{ $event->body }}</dd>
+                                <dd>{!! $event->body !!}</dd>
                             @endif
                         </dl>
                     </div>
