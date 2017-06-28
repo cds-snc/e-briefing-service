@@ -28,6 +28,11 @@ class Event extends Model
         return $this->trip->people->whereNotIn('id', $this->participants->pluck('id'));
     }
 
+    public function people()
+    {
+        return $this->belongsToMany(Person::class);
+    }
+
     public function participants()
     {
         return $this->belongsToMany(Person::class)->wherePivot('is_participant', 1);

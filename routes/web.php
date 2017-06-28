@@ -38,3 +38,4 @@ Route::resource('events', 'EventController', ['only' => [
 ]]);
 
 Route::post('events/{event}/participants', ['as' => 'events.participant.add', 'uses' => 'EventParticipantsController@add']);
+Route::post('events/{event}/contacts', ['as' => 'events.contacts.add', 'uses' => 'EventContactsController@add']);

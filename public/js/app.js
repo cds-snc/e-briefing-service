@@ -1063,11 +1063,13 @@ tinymce.init({
 Vue.component('example', __webpack_require__(40));
 
 Vue.component('add-participant-modal', __webpack_require__(57));
+Vue.component('add-contact-modal', __webpack_require__(60));
 
 var app = new Vue({
     el: '#app',
     data: {
-        isParticipantModalActive: false
+        isParticipantModalActive: false,
+        isContactModalActive: false
     }
 });
 
@@ -98294,6 +98296,201 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
      require("vue-hot-reload-api").rerender("data-v-37aeae42", module.exports)
+  }
+}
+
+/***/ }),
+/* 59 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['active', 'people', 'post_url', 'csrf_token'],
+    mounted: function mounted() {
+        console.log(this.post_url);
+    },
+    data: function data() {
+        return {
+            isActive: this.active || false
+        };
+    },
+
+    watch: {
+        active: function active(value) {
+            this.isActive = value;
+        }
+    },
+    methods: {
+        cancel: function cancel() {
+            this.close();
+        },
+        close: function close() {
+            this.$emit('close');
+            this.$emit('update:active', false);
+        },
+        keyPress: function keyPress(event) {
+            // Esc key
+            if (event.keyCode === 27) this.cancel();
+        },
+        postForm: function postForm() {}
+    },
+    created: function created() {
+        if (typeof window !== 'undefined') {
+            document.addEventListener('keyup', this.keyPress);
+        }
+    },
+    beforeDestroy: function beforeDestroy() {
+        if (typeof window !== 'undefined') {
+            document.removeEventListener('keyup', this.keyPress);
+        }
+    }
+});
+
+/***/ }),
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(9)(
+  /* script */
+  __webpack_require__(59),
+  /* template */
+  __webpack_require__(61),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/samojled/Code/gcdigital/e-briefing-service/resources/assets/js/components/AddContactModal.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] AddContactModal.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-e30885dc", Component.options)
+  } else {
+    hotAPI.reload("data-v-e30885dc", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 61 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return (_vm.isActive) ? _c('div', {
+    staticClass: "modal is-active"
+  }, [_c('div', {
+    staticClass: "modal-background",
+    on: {
+      "click": _vm.cancel
+    }
+  }), _vm._v(" "), _c('div', {
+    staticClass: "modal-card"
+  }, [_vm._m(0), _vm._v(" "), _c('form', {
+    attrs: {
+      "method": "post",
+      "action": _vm.post_url
+    }
+  }, [_c('input', {
+    attrs: {
+      "type": "hidden",
+      "name": "_token"
+    },
+    domProps: {
+      "value": _vm.csrf_token
+    }
+  }), _vm._v(" "), _c('section', {
+    staticClass: "modal-card-body"
+  }, [_c('div', {
+    staticClass: "field"
+  }, [_c('label', {
+    staticClass: "label"
+  }, [_vm._v("People")]), _vm._v(" "), _c('p', {
+    staticClass: "control"
+  }, [_c('span', {
+    staticClass: "select"
+  }, [_c('select', {
+    attrs: {
+      "name": "person"
+    }
+  }, [_c('option', {
+    attrs: {
+      "value": ""
+    }
+  }, [_vm._v("Select a person")]), _vm._v(" "), _vm._l((_vm.people), function(person) {
+    return _c('option', {
+      domProps: {
+        "value": person.id
+      }
+    }, [_vm._v(_vm._s(person.name))])
+  })], 2)])])])]), _vm._v(" "), _vm._m(1)])]), _vm._v(" "), _c('button', {
+    staticClass: "modal-close",
+    on: {
+      "click": _vm.cancel
+    }
+  })]) : _vm._e()
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('header', {
+    staticClass: "modal-card-head"
+  }, [_c('p', {
+    staticClass: "modal-card-title"
+  }, [_vm._v("Add a Contact")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('footer', {
+    staticClass: "modal-card-foot"
+  }, [_c('button', {
+    staticClass: "button is-success",
+    attrs: {
+      "type": "submit"
+    }
+  }, [_vm._v("Add")])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-e30885dc", module.exports)
   }
 }
 

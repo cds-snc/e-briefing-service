@@ -53,7 +53,7 @@
                 <div class="column">
                     <h3 class="title">Contacts
                         @if($available_contacts->count())
-                            <a href="" class="button is-default pull-right">Add a Contact</a>
+                            <button class="button is-default pull-right" @click="isContactModalActive = true">Add a Contact</button>
                         @endif
                     </h3>
 
@@ -62,6 +62,12 @@
                             There are no Contacts associated with this Event yet.
                         </div>
                     @endunless
+
+                    @foreach($event->contacts as $contact)
+                        <p><strong>{{ $contact->name }}</strong><br>
+                        {{ $contact->title }}<br>
+                        {{ $contact->telephone }}</p>
+                    @endforeach
 
                     <h3 class="title">Participants
                         @if($available_participants->count())
@@ -119,4 +125,11 @@
             :post_url="'{{ route('events.participant.add', $event) }}'"
             :csrf_token="'{{ csrf_token() }}'">
     </add-participant-modal>
+
+    <add-contact-modal
+            :active.sync="isContactModalActive"
+            :people="{{ $available_contacts }}"
+            :post_url="'{{ route('events.contacts.add', $event) }}'"
+            :csrf_token="'{{ csrf_token() }}'">
+    </add-contact-modal>
 @endsection

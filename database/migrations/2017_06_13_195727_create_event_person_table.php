@@ -16,8 +16,8 @@ class CreateEventPersonTable extends Migration
         Schema::create('event_person', function (Blueprint $table) {
             $table->unsignedInteger('event_id');
             $table->unsignedInteger('person_id');
-            $table->boolean('is_contact');
-            $table->boolean('is_participant');
+            $table->boolean('is_contact', 0);
+            $table->boolean('is_participant', 0);
 
             $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
             $table->foreign('person_id')->references('id')->on('people')->onDelete('cascade');

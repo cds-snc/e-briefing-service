@@ -46,10 +46,12 @@ tinymce.init({
 Vue.component('example', require('./components/Example.vue'));
 
 Vue.component('add-participant-modal', require('./components/AddParticipantModal.vue'));
+Vue.component('add-contact-modal', require('./components/AddContactModal.vue'));
 
 const app = new Vue({
     el: '#app',
     data: {
-        isParticipantModalActive: false
+        isParticipantModalActive: false,
+        isContactModalActive: false,
     }
 });

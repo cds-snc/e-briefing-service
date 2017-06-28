@@ -9,8 +9,8 @@ class EventParticipantsController extends Controller
 {
     public function add(Event $event)
     {
-        $event->participants()->attach(request()->person, ['is_contact' => 0, 'is_participant' => 1]);
+        $event->people()->attach(request()->person, ['is_participant' => 1]);
 
-        return redirect()->back()->with('Person added!');
+        return redirect()->back()->with('Participant added!');
     }
 }
