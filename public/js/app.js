@@ -98141,11 +98141,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['active', 'people', 'post_url', 'csrf_token'],
     mounted: function mounted() {
-        console.log(this.post_url);
+        console.log(this.people.length);
     },
     data: function data() {
         return {
@@ -98247,7 +98252,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('section', {
     staticClass: "modal-card-body"
-  }, [_c('div', {
+  }, [(_vm.people.length > 0) ? _c('div', {
     staticClass: "field"
   }, [_c('label', {
     staticClass: "label"
@@ -98269,7 +98274,23 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "value": person.id
       }
     }, [_vm._v(_vm._s(person.name))])
-  })], 2)])])])]), _vm._v(" "), _vm._m(1)])]), _vm._v(" "), _c('button', {
+  })], 2)])])]) : _c('div', {
+    staticClass: "notification is-warning"
+  }, [_vm._v("\n                    There are no participants available.\n                ")])]), _vm._v(" "), _c('footer', {
+    staticClass: "modal-card-foot"
+  }, [(_vm.people.length > 0) ? _c('button', {
+    staticClass: "button is-success",
+    attrs: {
+      "type": "submit"
+    }
+  }, [_vm._v("Add")]) : _c('button', {
+    staticClass: "button",
+    on: {
+      "click": _vm.cancel
+    }
+  }, [_vm._v("Cancel")]), _vm._v(" "), _c('button', {
+    staticClass: "button"
+  }, [_vm._v("Create a new Person")])])])]), _vm._v(" "), _c('button', {
     staticClass: "modal-close",
     on: {
       "click": _vm.cancel
@@ -98281,15 +98302,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('p', {
     staticClass: "modal-card-title"
   }, [_vm._v("Add a Participant")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('footer', {
-    staticClass: "modal-card-foot"
-  }, [_c('button', {
-    staticClass: "button is-success",
-    attrs: {
-      "type": "submit"
-    }
-  }, [_vm._v("Add")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {

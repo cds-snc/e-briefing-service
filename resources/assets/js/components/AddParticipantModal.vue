@@ -8,7 +8,7 @@
             <form method="post" :action="post_url">
                 <input type="hidden" name="_token" :value="csrf_token">
                 <section class="modal-card-body">
-                    <div class="field">
+                    <div v-if="people.length > 0" class="field">
                         <label class="label">People</label>
                         <p class="control">
                             <span class="select">
@@ -19,9 +19,14 @@
                             </span>
                         </p>
                     </div>
+                    <div v-else class="notification is-warning">
+                        There are no participants available.
+                    </div>
                 </section>
                 <footer class="modal-card-foot">
-                    <button class="button is-success" type="submit">Add</button>
+                    <button v-if="people.length > 0" class="button is-success" type="submit">Add</button>
+                    <button v-else class="button" @click="cancel">Cancel</button>
+                    <button class="button">Create a new Person</button>
                 </footer>
             </form>
         </div>
@@ -33,7 +38,7 @@
     export default {
         props: ['active', 'people', 'post_url', 'csrf_token'],
         mounted() {
-            console.log(this.post_url);
+            console.log(this.people.length);
         },
         data() {
             return {

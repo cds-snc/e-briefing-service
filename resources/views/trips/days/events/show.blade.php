@@ -52,9 +52,7 @@
                 </div>
                 <div class="column">
                     <h3 class="title">Contacts
-                        @if($available_contacts->count())
-                            <button class="button is-default pull-right" @click="isContactModalActive = true">Add a Contact</button>
-                        @endif
+                        <button class="button is-default pull-right" @click="isContactModalActive = true">Add a Contact</button>
                     </h3>
 
                     @unless($event->contacts->count())
@@ -70,9 +68,7 @@
                     @endforeach
 
                     <h3 class="title">Participants
-                        @if($available_participants->count())
-                            <button class="button is-default pull-right" @click="isParticipantModalActive = true">Add a Participant</button>
-                        @endif
+                        <button class="button is-default pull-right" @click="isParticipantModalActive = true">Add a Participant</button>
                     </h3>
 
                     @unless($event->participants->count())
@@ -96,9 +92,7 @@
                     @endforeach
 
                     <h3 class="title">Documents
-                        @if($documents->count())
-                            <button class="button is-default pull-right">Add a Document</button>
-                        @endif
+                        <button class="button is-default pull-right">Add a Document</button>
                     </h3>
 
                     @unless($event->documents->count())
