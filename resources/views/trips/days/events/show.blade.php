@@ -97,22 +97,13 @@
 
                     <h3 class="title">Documents
                         @if($documents->count())
-                            <a href="" class="button is-default pull-right">Add a Document</a>
+                            <button class="button is-default pull-right">Add a Document</button>
                         @endif
                     </h3>
 
-                    @if($documents->count())
-                        @unless($event->documents->count())
-                            <div class="notification is-info">
-                                There are no Documents associated with this Event yet.
-                            </div>
-                        @endunless
-                    @endif
-
-                    @unless($documents->count())
+                    @unless($event->documents->count())
                         <div class="notification is-info">
-                            There are no Documents associated with this Trip yet.  You will need to create some
-                            using the link in the sidebar.
+                            There are no Documents associated with this Event yet.
                         </div>
                     @endunless
                 </div>
