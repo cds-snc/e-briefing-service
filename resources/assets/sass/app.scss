@@ -1,6 +1,17 @@
 @import "node_modules/bulma/bulma";
 @import "node_modules/font-awesome/css/font-awesome";
 
+nav.sidebar {
+ padding: 20px;
+  background-color: #eee;
+  height: 100%;
+}
+
+.content {
+  padding: 20px;
+}
+
+
 .flash-message {
   margin-bottom: 20px;
 }

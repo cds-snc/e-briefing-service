@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="columns">
-        <div class="column is-2">
+        @push('nav-menu')
             @include('trips._sidebar', ['trip' => $day->trip])
-        </div>
+        @endpush
 
         <div class="column">
             <h1 class="title">{{ $day->trip->name }} : {{ $day->name }}

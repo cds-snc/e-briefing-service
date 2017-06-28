@@ -1,26 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="columns">
-            <div class="column is-2">
-                @include('trips._sidebar', ['trip' => $event->trip])
-            </div>
+    <div class="columns">
+        @push('nav-menu')
+            @include('trips._sidebar', ['trip' => $event->trip])
+        @endpush
 
-            <div class="column">
-                <h1 class="title">{{ $event->day->name }} : Edit an Event</h1>
+        <div class="column">
+            <h1 class="title">{{ $event->day->name }} : Edit an Event</h1>
 
-                @include('layouts.flash')
+            @include('layouts.flash')
 
-                <form action="{{ route('events.update', ['event' => $event]) }}" method="POST">
-                    {{ method_field('PUT') }}
-                    {{ csrf_field() }}
+            <form action="{{ route('events.update', ['event' => $event]) }}" method="POST">
+                {{ method_field('PUT') }}
+                {{ csrf_field() }}
 
-                    @include('trips.days.events._form')
+                @include('trips.days.events._form')
 
-                    <button type="submit" class="button is-primary">Submit</button>
-                </form>
-            </div>
+                <button type="submit" class="button is-primary">Submit</button>
+            </form>
         </div>
     </div>
 

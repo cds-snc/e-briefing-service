@@ -15,34 +15,35 @@
 </head>
 <body>
     <div id="app">
-        <!-- navigation -->
-        <nav class="nav has-shadow">
-            <div class="container">
-                <div class="nav-left">
+        <div class="columns">
+            <div class="column is-3">
+                <nav class="sidebar">
                     <a href="{{ url('/') }}">
                         <img class="nav-logo" src="/images/e-brief-logo.png" alt="E Briefing App Logo">
                     </a>
-                    <a class="nav-item is-tab" href="{{ route('trips.index') }}">
+                    <br>
+                    <a class="" href="{{ route('trips.index') }}">
                         Trips
                     </a>
-                    <a class="nav-item is-tab" href="{{ route('users.index') }}">
+                    <br>
+                    <a class="" href="{{ route('users.index') }}">
                         User Management
                     </a>
-                </div>
-                <span class="nav-toggle">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </span>
-                <div class="nav-right nav-menu">
-                    @stack('right-nav-menu')
+                    <br>
+
+                    <hr>
+
+                    @stack('nav-menu')
+
+                    <hr>
+
                     @if (Auth::guest())
                         <a class="nav-item is-tab" href="{{ url('/login') }}">Login</a>
                         <a class="nav-item is-tab" href="{{ url('/register') }}">Register</a>
                     @else
-                        <div class="nav-item">{{ auth()->user()->name }}</div>
+                        <div>{{ auth()->user()->name }}</div>
 
-                        <a class="nav-item" href="{{ url('/logout') }}"
+                        <a href="{{ url('/logout') }}"
                            onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
                             Logout</a>
@@ -51,16 +52,14 @@
                             {{ csrf_field() }}
                         </form>
                     @endif
+                </nav>
+            </div>
+            <div class="column">
+                <div class="content">
+                    @yield('content')
                 </div>
             </div>
-        </nav>
-
-        <!-- main content -->
-        <section class="section">
-            <div class="container">
-                @yield('content')
-            </div>
-        </section>
+        </div>
     </div>
 
     <!-- Scripts -->

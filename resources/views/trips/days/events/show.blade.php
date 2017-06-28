@@ -1,14 +1,10 @@
 @extends('layouts.app')
 
-@push('scripts')
-
-@endpush
-
 @section('content')
     <div class="columns">
-        <div class="column is-2">
+        @push('nav-menu')
             @include('trips._sidebar', ['trip' => $event->trip])
-        </div>
+        @endpush
 
         <div class="column">
             @include('layouts.flash')
