@@ -33,25 +33,13 @@
                         @if($event->is_meal)
                             <span class="fa fa-cutlery"></span>
                         @endif
-
                         <p>
                             <a href="{{ route('events.show', ['event' => $event]) }}">Manage</a> |
                             <a href="">Delete</a>
                         </p>
-
                     </div>
                 </div>
             @endforeach
         </div>
     </div>
-
-    <div class="modal">
-        <div class="modal-background"></div>
-        <div class="modal-content">
-
-        </div>
-        <button class="modal-close"></button>
-    </div>
-
-
 @endsection
