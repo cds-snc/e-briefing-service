@@ -21,17 +21,10 @@
                     <a href="{{ url('/') }}">
                         <img class="nav-logo" src="/images/e-brief-logo.png" alt="E Briefing App Logo">
                     </a>
-                    <br>
-                    <a class="" href="{{ route('trips.index') }}">
-                        Trips
-                    </a>
-                    <br>
-                    <a class="" href="{{ route('users.index') }}">
-                        User Management
-                    </a>
-                    <br>
 
-                    <hr>
+                    <p>
+                        <a href="{{ route('trips.index') }}">Trips</a> | <a href="{{ route('users.index') }}">User Management</a>
+                    </p><br>
 
                     @stack('nav-menu')
 
