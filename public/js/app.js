@@ -98136,11 +98136,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['active', 'people'],
+    props: ['active', 'people', 'post_url', 'csrf_token'],
     mounted: function mounted() {
-        console.log(this.people);
+        console.log(this.post_url);
     },
     data: function data() {
         return {
@@ -98164,7 +98167,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         keyPress: function keyPress(event) {
             // Esc key
             if (event.keyCode === 27) this.cancel();
-        }
+        },
+        postForm: function postForm() {}
     },
     created: function created() {
         if (typeof window !== 'undefined') {
@@ -98226,7 +98230,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('div', {
     staticClass: "modal-card"
-  }, [_vm._m(0), _vm._v(" "), _c('section', {
+  }, [_vm._m(0), _vm._v(" "), _c('form', {
+    attrs: {
+      "method": "post",
+      "action": _vm.post_url
+    }
+  }, [_c('input', {
+    attrs: {
+      "type": "hidden",
+      "name": "_token"
+    },
+    domProps: {
+      "value": _vm.csrf_token
+    }
+  }), _vm._v(" "), _c('section', {
     staticClass: "modal-card-body"
   }, [_c('div', {
     staticClass: "field"
@@ -98250,7 +98267,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "value": person.id
       }
     }, [_vm._v(_vm._s(person.name))])
-  })], 2)])])])]), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _c('button', {
+  })], 2)])])])]), _vm._v(" "), _vm._m(1)])]), _vm._v(" "), _c('button', {
     staticClass: "modal-close",
     on: {
       "click": _vm.cancel
@@ -98265,8 +98282,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('footer', {
     staticClass: "modal-card-foot"
-  }, [_c('a', {
-    staticClass: "button is-success"
+  }, [_c('button', {
+    staticClass: "button is-success",
+    attrs: {
+      "type": "submit"
+    }
   }, [_vm._v("Add")])])
 }]}
 module.exports.render._withStripped = true

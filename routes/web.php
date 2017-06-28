@@ -36,3 +36,5 @@ Route::resource('days.events', 'DayEventsController');
 Route::resource('events', 'EventController', ['only' => [
     'show', 'edit', 'update', 'destroy'
 ]]);
+
+Route::post('events/{event}/participants', ['as' => 'events.participant.add', 'uses' => 'EventParticipantsController@add']);

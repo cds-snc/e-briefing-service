@@ -5,22 +5,25 @@
             <header class="modal-card-head">
                 <p class="modal-card-title">Add a Participant</p>
             </header>
-            <section class="modal-card-body">
-                <div class="field">
-                    <label class="label">People</label>
-                    <p class="control">
-                        <span class="select">
-                            <select name="person">
-                                <option value="">Select a person</option>
-                                <option v-for="person in people" :value="person.id">{{ person.name }}</option>
-                            </select>
-                        </span>
-                    </p>
-                </div>
-            </section>
-            <footer class="modal-card-foot">
-                <a class="button is-success">Add</a>
-            </footer>
+            <form method="post" :action="post_url">
+                <input type="hidden" name="_token" :value="csrf_token">
+                <section class="modal-card-body">
+                    <div class="field">
+                        <label class="label">People</label>
+                        <p class="control">
+                            <span class="select">
+                                <select name="person">
+                                    <option value="">Select a person</option>
+                                    <option v-for="person in people" :value="person.id">{{ person.name }}</option>
+                                </select>
+                            </span>
+                        </p>
+                    </div>
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button is-success" type="submit">Add</button>
+                </footer>
+            </form>
         </div>
         <button class="modal-close" @click="cancel"></button>
     </div>
@@ -28,9 +31,9 @@
 
 <script>
     export default {
-        props: ['active', 'people'],
+        props: ['active', 'people', 'post_url', 'csrf_token'],
         mounted() {
-            console.log(this.people);
+            console.log(this.post_url);
         },
         data() {
             return {
@@ -53,6 +56,9 @@
             keyPress(event) {
                 // Esc key
                 if (event.keyCode === 27) this.cancel()
+            },
+            postForm() {
+
             }
         },
         created() {

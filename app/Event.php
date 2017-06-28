@@ -18,6 +18,16 @@ class Event extends Model
         return $this->day->trip;
     }
 
+    public function getAvailableContactsAttribute()
+    {
+        return $this->trip->people->whereNotIn('id', $this->contacts->pluck('id'));
+    }
+
+    public function getAvailableParticipantsAttribute()
+    {
+        return $this->trip->people->whereNotIn('id', $this->participants->pluck('id'));
+    }
+
     public function participants()
     {
         return $this->belongsToMany(Person::class)->wherePivot('is_participant', 1);

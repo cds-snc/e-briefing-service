@@ -52,45 +52,42 @@
                 </div>
                 <div class="column">
                     <h3 class="title">Contacts
-                        @if($people->count())
+                        @if($available_contacts->count())
                             <a href="" class="button is-default pull-right">Add a Contact</a>
                         @endif
                     </h3>
 
-                    @if($people->count())
-                        @unless($event->contacts->count())
-                            <div class="notification is-info">
-                                There are no Contacts associated with this Event yet.
-                            </div>
-                        @endunless
-                    @endif
-
-                    @unless($people->count())
+                    @unless($event->contacts->count())
                         <div class="notification is-info">
-                            There are no People associated with this Trip yet.  You will need to create some
-                            using the link in the sidebar.
+                            There are no Contacts associated with this Event yet.
                         </div>
                     @endunless
 
                     <h3 class="title">Participants
-                        @if($people->count())
+                        @if($available_participants->count())
                             <button class="button is-default pull-right" @click="isParticipantModalActive = true">Add a Participant</button>
                         @endif
                     </h3>
-                    @if($people->count())
-                        @unless($event->participants->count())
-                            <div class="notification is-info">
-                                There are no people associated with this Event yet.
-                            </div>
-                        @endunless
-                    @endif
 
-                    @unless($people->count())
+                    @unless($event->participants->count())
                         <div class="notification is-info">
-                            There are no people associated with this Trip yet.  You will need to create some
-                            using the link in the sidebar.
+                            There are no people associated with this Event yet.
                         </div>
                     @endunless
+
+                    @foreach($event->participants as $participant)
+                        <div class="columns">
+                            @if($participant->image)
+                                <div class="column is-2">
+                                    <img src="{{ $participant->image_url }}" class="person-photo-fluid">
+                                </div>
+                            @endif
+                            <div class="column">
+                                {{ $participant->name }}<br>
+                                {{ $participant->title }}
+                            </div>
+                        </div>
+                    @endforeach
 
                     <h3 class="title">Documents
                         @if($documents->count())
@@ -116,5 +113,10 @@
             </div>
         </div>
     </div>
-    <add-participant-modal :active.sync="isParticipantModalActive" :people="{{ $people }}"></add-participant-modal>
+    <add-participant-modal
+            :active.sync="isParticipantModalActive"
+            :people="{{ $available_participants }}"
+            :post_url="'{{ route('events.participant.add', $event) }}'"
+            :csrf_token="'{{ csrf_token() }}'">
+    </add-participant-modal>
 @endsection

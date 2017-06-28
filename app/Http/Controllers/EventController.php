@@ -12,7 +12,8 @@ class EventController extends Controller
     {
         return view('trips.days.events.show', [
             'event' => $event,
-            'people' => $event->trip->people,
+            'available_contacts' => $event->available_contacts,
+            'available_participants' => $event->available_participants,
             'documents' => $event->trip->documents->pluck('name', 'id')
         ]);
     }
