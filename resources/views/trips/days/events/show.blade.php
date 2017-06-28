@@ -116,5 +116,5 @@
             </div>
         </div>
     </div>
-    <add-participant-modal :active.sync="isParticipantModalActive"></add-participant-modal>
+    <add-participant-modal :active.sync="isParticipantModalActive" :people="{{ $people }}"></add-participant-modal>
 @endsection
