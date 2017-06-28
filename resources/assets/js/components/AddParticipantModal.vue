@@ -6,7 +6,17 @@
                 <p class="modal-card-title">Add a Participant</p>
             </header>
             <section class="modal-card-body">
-                dddd
+                <div class="field">
+                    <label class="label">People</label>
+                    <p class="control">
+                        <span class="select">
+                            <select name="person">
+                                <option value="">Select a person</option>
+                                <option v-for="person in people" :value="person.id">{{ person.name }}</option>
+                            </select>
+                        </span>
+                    </p>
+                </div>
             </section>
             <footer class="modal-card-foot">
                 <a class="button is-success">Add</a>
@@ -18,10 +28,10 @@
 
 <script>
     export default {
+        props: ['active', 'people'],
         mounted() {
-            console.log('Component mounted.')
+            console.log(this.people);
         },
-        props: ['active'],
         data() {
             return {
                 isActive: this.active || false

@@ -98126,13 +98126,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['active', 'people'],
     mounted: function mounted() {
-        console.log('Component mounted.');
+        console.log(this.people);
     },
-
-    props: ['active'],
     data: function data() {
         return {
             isActive: this.active || false
@@ -98215,26 +98224,50 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.cancel
     }
-  }), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('button', {
+  }), _vm._v(" "), _c('div', {
+    staticClass: "modal-card"
+  }, [_vm._m(0), _vm._v(" "), _c('section', {
+    staticClass: "modal-card-body"
+  }, [_c('div', {
+    staticClass: "field"
+  }, [_c('label', {
+    staticClass: "label"
+  }, [_vm._v("People")]), _vm._v(" "), _c('p', {
+    staticClass: "control"
+  }, [_c('span', {
+    staticClass: "select"
+  }, [_c('select', {
+    attrs: {
+      "name": "person"
+    }
+  }, [_c('option', {
+    attrs: {
+      "value": ""
+    }
+  }, [_vm._v("Select a person")]), _vm._v(" "), _vm._l((_vm.people), function(person) {
+    return _c('option', {
+      domProps: {
+        "value": person.id
+      }
+    }, [_vm._v(_vm._s(person.name))])
+  })], 2)])])])]), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _c('button', {
     staticClass: "modal-close",
     on: {
       "click": _vm.cancel
     }
   })]) : _vm._e()
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "modal-card"
-  }, [_c('header', {
+  return _c('header', {
     staticClass: "modal-card-head"
   }, [_c('p', {
     staticClass: "modal-card-title"
-  }, [_vm._v("Add a Participant")])]), _vm._v(" "), _c('section', {
-    staticClass: "modal-card-body"
-  }, [_vm._v("\n            dddd\n        ")]), _vm._v(" "), _c('footer', {
+  }, [_vm._v("Add a Participant")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('footer', {
     staticClass: "modal-card-foot"
   }, [_c('a', {
     staticClass: "button is-success"
-  }, [_vm._v("Add")])])])
+  }, [_vm._v("Add")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
