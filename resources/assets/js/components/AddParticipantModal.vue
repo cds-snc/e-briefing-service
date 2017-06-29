@@ -5,7 +5,7 @@
             <header class="modal-card-head">
                 <p class="modal-card-title">Add a Participant</p>
             </header>
-            <form method="post" :action="post_url">
+            <form method="post" :action="'/events/' + event + '/participants'">
                 <input type="hidden" name="_token" :value="csrf_token">
                 <section class="modal-card-body">
                     <div v-if="people.length > 0" class="field">
@@ -20,13 +20,13 @@
                         </p>
                     </div>
                     <div v-else class="notification is-warning">
-                        There are no participants available.
+                        There are no people available.
                     </div>
                 </section>
                 <footer class="modal-card-foot">
                     <button v-if="people.length > 0" class="button is-success" type="submit">Add</button>
                     <button v-else class="button" @click="cancel">Cancel</button>
-                    <button class="button">Create a new Person</button>
+                    <a :href="'/events/' + event + '/people/create'" class="button">Create a new Person</a>
                 </footer>
             </form>
         </div>
@@ -36,9 +36,9 @@
 
 <script>
     export default {
-        props: ['active', 'people', 'post_url', 'csrf_token'],
+        props: ['active', 'people', 'event', 'csrf_token'],
         mounted() {
-            console.log(this.people.length);
+
         },
         data() {
             return {

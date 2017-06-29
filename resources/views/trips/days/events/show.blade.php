@@ -103,14 +103,14 @@
     <add-participant-modal
             :active.sync="isParticipantModalActive"
             :people="{{ $available_participants }}"
-            :post_url="'{{ route('events.participant.add', $event) }}'"
+            :event="'{{ $event->id }}'"
             :csrf_token="'{{ csrf_token() }}'">
     </add-participant-modal>
 
     <add-contact-modal
             :active.sync="isContactModalActive"
             :people="{{ $available_contacts }}"
-            :post_url="'{{ route('events.contacts.add', $event) }}'"
+            :event="'{{ $event->id }}'"
             :csrf_token="'{{ csrf_token() }}'">
     </add-contact-modal>
 @endsection

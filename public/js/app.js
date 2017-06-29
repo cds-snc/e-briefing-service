@@ -98148,10 +98148,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['active', 'people', 'post_url', 'csrf_token'],
-    mounted: function mounted() {
-        console.log(this.people.length);
-    },
+    props: ['active', 'people', 'event', 'csrf_token'],
+    mounted: function mounted() {},
     data: function data() {
         return {
             isActive: this.active || false
@@ -98240,7 +98238,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._m(0), _vm._v(" "), _c('form', {
     attrs: {
       "method": "post",
-      "action": _vm.post_url
+      "action": '/events/' + _vm.event + '/participants'
     }
   }, [_c('input', {
     attrs: {
@@ -98276,7 +98274,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_vm._v(_vm._s(person.name))])
   })], 2)])])]) : _c('div', {
     staticClass: "notification is-warning"
-  }, [_vm._v("\n                    There are no participants available.\n                ")])]), _vm._v(" "), _c('footer', {
+  }, [_vm._v("\n                    There are no people available.\n                ")])]), _vm._v(" "), _c('footer', {
     staticClass: "modal-card-foot"
   }, [(_vm.people.length > 0) ? _c('button', {
     staticClass: "button is-success",
@@ -98288,8 +98286,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.cancel
     }
-  }, [_vm._v("Cancel")]), _vm._v(" "), _c('button', {
-    staticClass: "button"
+  }, [_vm._v("Cancel")]), _vm._v(" "), _c('a', {
+    staticClass: "button",
+    attrs: {
+      "href": '/events/' + _vm.event + '/people/create'
+    }
   }, [_vm._v("Create a new Person")])])])]), _vm._v(" "), _c('button', {
     staticClass: "modal-close",
     on: {
@@ -98348,9 +98349,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['active', 'people', 'post_url', 'csrf_token'],
+    props: ['active', 'people', 'event', 'csrf_token'],
     mounted: function mounted() {
         console.log(this.post_url);
     },
@@ -98442,7 +98448,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._m(0), _vm._v(" "), _c('form', {
     attrs: {
       "method": "post",
-      "action": _vm.post_url
+      "action": '/events/' + _vm.event + '/contacts'
     }
   }, [_c('input', {
     attrs: {
@@ -98454,7 +98460,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('section', {
     staticClass: "modal-card-body"
-  }, [_c('div', {
+  }, [(_vm.people.length > 0) ? _c('div', {
     staticClass: "field"
   }, [_c('label', {
     staticClass: "label"
@@ -98476,7 +98482,26 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "value": person.id
       }
     }, [_vm._v(_vm._s(person.name))])
-  })], 2)])])])]), _vm._v(" "), _vm._m(1)])]), _vm._v(" "), _c('button', {
+  })], 2)])])]) : _c('div', {
+    staticClass: "notification is-warning"
+  }, [_vm._v("\n                    There are no people available.\n                ")])]), _vm._v(" "), _c('footer', {
+    staticClass: "modal-card-foot"
+  }, [(_vm.people.length > 0) ? _c('button', {
+    staticClass: "button is-success",
+    attrs: {
+      "type": "submit"
+    }
+  }, [_vm._v("Add")]) : _c('button', {
+    staticClass: "button",
+    on: {
+      "click": _vm.cancel
+    }
+  }, [_vm._v("Cancel")]), _vm._v(" "), _c('a', {
+    staticClass: "button",
+    attrs: {
+      "href": '/events/' + _vm.event + '/people/create'
+    }
+  }, [_vm._v("Create a new Person")])])])]), _vm._v(" "), _c('button', {
     staticClass: "modal-close",
     on: {
       "click": _vm.cancel
@@ -98488,15 +98513,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('p', {
     staticClass: "modal-card-title"
   }, [_vm._v("Add a Contact")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('footer', {
-    staticClass: "modal-card-foot"
-  }, [_c('button', {
-    staticClass: "button is-success",
-    attrs: {
-      "type": "submit"
-    }
-  }, [_vm._v("Add")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
