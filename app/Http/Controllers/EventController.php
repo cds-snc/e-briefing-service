@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
+
     public function show(Event $event)
     {
         return view('trips.days.events.show', [

@@ -9,6 +9,12 @@ use Illuminate\Http\Request;
 
 class EventParticipantsController extends Controller
 {
+
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
+    
     public function add(Event $event)
     {
         $event->people()->attach(request()->person, ['is_participant' => 1]);
