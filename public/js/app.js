@@ -98289,7 +98289,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("Cancel")]), _vm._v(" "), _c('a', {
     staticClass: "button",
     attrs: {
-      "href": '/events/' + _vm.event + '/people/create'
+      "href": '/events/' + _vm.event + '/participants/create'
     }
   }, [_vm._v("Create a new Person")])])])]), _vm._v(" "), _c('button', {
     staticClass: "modal-close",
@@ -98499,7 +98499,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("Cancel")]), _vm._v(" "), _c('a', {
     staticClass: "button",
     attrs: {
-      "href": '/events/' + _vm.event + '/people/create'
+      "href": '/events/' + _vm.event + '/contacts/create'
     }
   }, [_vm._v("Create a new Person")])])])]), _vm._v(" "), _c('button', {
     staticClass: "modal-close",

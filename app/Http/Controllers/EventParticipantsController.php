@@ -24,7 +24,7 @@ class EventParticipantsController extends Controller
 
     public function create(Event $event)
     {
-        return view('trips.days.events.people.create', [
+        return view('trips.days.events.participants.create', [
             'event' => $event,
             'person' => new Person()
         ]);
@@ -32,6 +32,28 @@ class EventParticipantsController extends Controller
 
     public function store(Event $event, StorePerson $request)
     {
+        $trip = $event->trip;
 
+        $person = $trip->people()->create([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'telephone' => $request->telephone,
+            'title' => $request->title,
+            'body' => $request->body
+        ]);
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = $file->store('photos', 'public');
+
+            $person->update([
+                'image' => $filename
+            ]);
+        }
+
+        $event->people()->attach($person->id, ['is_participant' => 1]);
+
+        return redirect()->route('events.show', $event)->with('success', 'Participant added!');
     }
 }

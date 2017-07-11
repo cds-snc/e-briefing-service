@@ -11,7 +11,7 @@
 
             @include('layouts.flash')
 
-            <form action="{{ route('events.people.store', $event) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('events.participants.store', $event) }}" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
 
                 <div class="field">

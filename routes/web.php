@@ -37,8 +37,10 @@ Route::resource('events', 'EventController', ['only' => [
     'show', 'edit', 'update', 'destroy'
 ]]);
 
-Route::post('events/{event}/participants', ['as' => 'events.participant.add', 'uses' => 'EventParticipantsController@add']);
-Route::get('events/{event}/people/create', ['as' => 'events.people.create', 'uses' => 'EventParticipantsController@create']);
-Route::post('events/{event}/people', ['as' => 'events.people.store', 'uses' => 'EventParticipantController@store']);
+Route::post('events/{event}/participants', ['as' => 'events.participants.add', 'uses' => 'EventParticipantsController@add']);
+Route::get('events/{event}/participants/create', ['as' => 'events.participants.create', 'uses' => 'EventParticipantsController@create']);
+Route::post('events/{event}/participants', ['as' => 'events.participants.store', 'uses' => 'EventParticipantsController@store']);
 
 Route::post('events/{event}/contacts', ['as' => 'events.contacts.add', 'uses' => 'EventContactsController@add']);
+Route::get('events/{event}/contacts/create', ['as' => 'events.contacts.create', 'uses' => 'EventContactsController@create']);
+Route::post('events/{event}/contacts', ['as' => 'events.contacts.store', 'uses' => 'EventContactsController@store']);

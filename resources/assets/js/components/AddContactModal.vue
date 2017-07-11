@@ -26,7 +26,7 @@
                 <footer class="modal-card-foot">
                     <button v-if="people.length > 0" class="button is-success" type="submit">Add</button>
                     <button v-else class="button" @click="cancel">Cancel</button>
-                    <a :href="'/events/' + event + '/people/create'" class="button">Create a new Person</a>
+                    <a :href="'/events/' + event + '/contacts/create'" class="button">Create a new Person</a>
                 </footer>
             </form>
         </div>
