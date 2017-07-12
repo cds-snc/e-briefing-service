@@ -9,12 +9,11 @@
         <div class="column">
             @include('layouts.flash')
 
+            <h1 class="title"><a href="{{ route('days.events.index', $event->day) }}">{{ $event->day->name }}</a> : {{ $event->title }}</h1>
+
             <div class="columns">
                 <div class="column">
-                    <h1 class="title"><a href="{{ route('days.events.index', $event->day) }}">{{ $event->day->name }}</a> : {{ $event->title }}
-                        <a href="{{ route('events.edit', $event) }}" class="button pull-right">Edit Details</a>
-                    </h1>
-
+                    <a href="{{ route('events.edit', $event) }}" class="button">Edit Details</a>
                     <dl class="details-list">
                         @if($event->type)
                             <dt>Event type</dt>
