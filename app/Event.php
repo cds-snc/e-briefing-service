@@ -13,21 +13,6 @@ class Event extends Model
         return $this->belongsTo(Day::class);
     }
 
-    public function getTripAttribute()
-    {
-        return $this->day->trip;
-    }
-
-    public function getAvailableContactsAttribute()
-    {
-        return $this->trip->people->whereNotIn('id', $this->contacts->pluck('id'));
-    }
-
-    public function getAvailableParticipantsAttribute()
-    {
-        return $this->trip->people->whereNotIn('id', $this->participants->pluck('id'));
-    }
-
     public function people()
     {
         return $this->belongsToMany(Person::class);
@@ -46,5 +31,25 @@ class Event extends Model
     public function documents()
     {
         return $this->belongsToMany(Document::class);
+    }
+
+    public function getTripAttribute()
+    {
+        return $this->day->trip;
+    }
+
+    public function getAvailableContactsAttribute()
+    {
+        return $this->trip->people->whereNotIn('id', $this->contacts->pluck('id'));
+    }
+
+    public function getAvailableParticipantsAttribute()
+    {
+        return $this->trip->people->whereNotIn('id', $this->participants->pluck('id'));
+    }
+
+    public function getAvailableDocumentsAttribute()
+    {
+        return $this->trip->documents->whereNotIn('id', $this->documents->pluck('id'));
     }
 }

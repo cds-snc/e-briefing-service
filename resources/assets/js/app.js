@@ -47,11 +47,13 @@ Vue.component('example', require('./components/Example.vue'));
 
 Vue.component('add-participant-modal', require('./components/AddParticipantModal.vue'));
 Vue.component('add-contact-modal', require('./components/AddContactModal.vue'));
+Vue.component('add-document-modal', require('./components/AddDocumentModal.vue'));
 
 const app = new Vue({
     el: '#app',
     data: {
         isParticipantModalActive: false,
         isContactModalActive: false,
+        isDocumentModalActive: false
     }
 });

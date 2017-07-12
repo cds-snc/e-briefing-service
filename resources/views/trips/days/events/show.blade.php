@@ -88,7 +88,7 @@
                     @endforeach
 
                     <h3 class="title">Documents
-                        <button class="button is-default pull-right">Add a Document</button>
+                        <button class="button is-default pull-right" @click="isDocumentModalActive = true">Add a Document</button>
                     </h3>
 
                     @unless($event->documents->count())
@@ -96,6 +96,14 @@
                             There are no Documents associated with this Event yet.
                         </div>
                     @endunless
+
+                    @if($event->documents->count())
+                        <ul>
+                            @foreach($event->documents as $document)
+                                <li>{{ $document->name }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
                 </div>
             </div>
         </div>
@@ -113,4 +121,11 @@
             :event="'{{ $event->id }}'"
             :csrf_token="'{{ csrf_token() }}'">
     </add-contact-modal>
+
+    <add-document-modal
+            :active.sync="isDocumentModalActive"
+            :documents="{{ $available_documents }}"
+            :event="'{{ $event->id }}'"
+            :csrf_token="'{{ csrf_token() }}'">
+    </add-document-modal>
 @endsection

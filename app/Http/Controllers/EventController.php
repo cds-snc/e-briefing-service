@@ -19,6 +19,7 @@ class EventController extends Controller
             'event' => $event,
             'available_contacts' => $event->available_contacts,
             'available_participants' => $event->available_participants,
+            'available_documents' => $event->available_documents,
             'documents' => $event->trip->documents->pluck('name', 'id')
         ]);
     }

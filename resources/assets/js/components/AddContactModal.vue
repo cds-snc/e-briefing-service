@@ -6,6 +6,7 @@
                 <p class="modal-card-title">Add a Contact</p>
             </header>
             <form method="post" :action="'/events/' + event + '/contacts'">
+                <input type="hidden" name="_method" value="put">
                 <input type="hidden" name="_token" :value="csrf_token">
                 <section class="modal-card-body">
                     <div v-if="people.length > 0" class="field">

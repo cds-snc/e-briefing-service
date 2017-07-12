@@ -3,31 +3,31 @@
         <div class="modal-background" @click="cancel"></div>
         <div class="modal-card">
             <header class="modal-card-head">
-                <p class="modal-card-title">Add a Participant</p>
+                <p class="modal-card-title">Add a Document</p>
             </header>
-            <form method="post" :action="'/events/' + event + '/participants'">
+            <form method="post" :action="'/events/' + event + '/documents'">
                 <input type="hidden" name="_method" value="put">
                 <input type="hidden" name="_token" :value="csrf_token">
                 <section class="modal-card-body">
-                    <div v-if="people.length > 0" class="field">
-                        <label class="label">People</label>
+                    <div v-if="documents.length > 0" class="field">
+                        <label class="label">Documents</label>
                         <p class="control">
                             <span class="select">
-                                <select name="person">
-                                    <option value="">Select a person</option>
-                                    <option v-for="person in people" :value="person.id">{{ person.name }}</option>
+                                <select name="document">
+                                    <option value="">Select a document</option>
+                                    <option v-for="document in documents" :value="document.id">{{ document.name }}</option>
                                 </select>
                             </span>
                         </p>
                     </div>
                     <div v-else class="notification is-warning">
-                        There are no people available.
+                        There are no documents available.
                     </div>
                 </section>
                 <footer class="modal-card-foot">
-                    <button v-if="people.length > 0" class="button is-success" type="submit">Add</button>
+                    <button v-if="documents.length > 0" class="button is-success" type="submit">Add</button>
                     <button v-else class="button" @click="cancel">Cancel</button>
-                    <a :href="'/events/' + event + '/participants/create'" class="button">Create a new Person</a>
+                    <a :href="'/events/' + event + '/documents/create'" class="button">Create a new Document</a>
                 </footer>
             </form>
         </div>
@@ -37,7 +37,7 @@
 
 <script>
     export default {
-        props: ['active', 'people', 'event', 'csrf_token'],
+        props: ['active', 'documents', 'event', 'csrf_token'],
         mounted() {
 
         },
