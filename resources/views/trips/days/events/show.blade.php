@@ -99,7 +99,13 @@
                     @if($event->documents->count())
                         <ul>
                             @foreach($event->documents as $document)
-                                <li>{{ $document->name }}</li>
+                                <li>{{ $document->name }}
+                                    @if($document->is_protected)
+                                        <span class="icon">
+                                            <i class="fa fa-lock"></i>
+                                        </span>
+                                    @endif
+                                </li>
                             @endforeach
                         </ul>
                     @endif
