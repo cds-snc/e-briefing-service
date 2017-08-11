@@ -1,71 +1,94 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="{{ app()->getLocale() }}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-@section('content')
-    <div class="columns">
-        <div class="column is-half is-offset-one-quarter">
-            <div class="card ">
-                <header class="card-header">
-                    <p class="card-header-title">
-                        Login
-                    </p>
-                </header>
-                <div class="card-content">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
-                        {{ csrf_field() }}
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-                        <div class="content">
-                            <div class="control is-horizontal">
-                                <div class="control-label">
-                                    <label class="label">{{ __('Email') }}</label>
-                                </div>
-                                <div class="control is-fullwidth">
-                                    <input name="email" class="input{{ $errors->has('email') ? ' is-danger' : '' }}" type="email" value="{{ old('email') }}" required autofocus>
-                                </div>
-                            </div>
+    <title>{{ config('app.name', 'eBriefing Management') }}</title>
 
-                            <div class="control is-horizontal">
-                                <div class="control-label">
-                                    <label class="label">{{ __('Password') }}</label>
-                                </div>
-                                <div class="control is-fullwidth">
-                                    <input name="password" class="input{{ $errors->has('password') ? ' is-danger' : '' }}" type="password" required>
-                                </div>
-                            </div>
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+</head>
+<body>
+<div id="app">
+    <section class="section">
+        <div class="columns">
+            <div class="column is-half is-offset-one-quarter">
+                <div class="card ">
+                    <header class="card-header">
+                        <p class="card-header-title">
+                            Login
+                        </p>
+                    </header>
+                    <div class="card-content">
+                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
+                            {{ csrf_field() }}
 
-                            <div class="control is-horizontal">
-                                <div class="control-label">
-                                    <!--spacer-->
-                                </div>
+                            <div class="content">
                                 <div class="control is-horizontal">
-                                    <label class="checkbox">
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
-                                        Remember me
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="control is-horizontal">
-                                <div class="control-label">
-                                    <!--spacer-->
-                                </div>
-                                <div class="control is-horizontal">
-                                    <div class="control is-grouped">
-                                        <p class="control">
-                                            <button class="button is-primary">Submit</button>
-                                        </p>
-                                        <p class="control is-expanded">
-                                            <a href="{{ url('/password/reset') }}">
-                                                Forgot password
-                                            </a>
-                                        </p>
+                                    <div class="control-label">
+                                        <label class="label">{{ __('Email') }}</label>
+                                    </div>
+                                    <div class="control is-fullwidth">
+                                        <input name="email" class="input{{ $errors->has('email') ? ' is-danger' : '' }}" type="email" value="{{ old('email') }}" required autofocus>
                                     </div>
                                 </div>
-                            </div>
 
-                        </div>
-                    </form>
+                                <div class="control is-horizontal">
+                                    <div class="control-label">
+                                        <label class="label">{{ __('Password') }}</label>
+                                    </div>
+                                    <div class="control is-fullwidth">
+                                        <input name="password" class="input{{ $errors->has('password') ? ' is-danger' : '' }}" type="password" required>
+                                    </div>
+                                </div>
+
+                                <div class="control is-horizontal">
+                                    <div class="control-label">
+                                        <!--spacer-->
+                                    </div>
+                                    <div class="control is-horizontal">
+                                        <label class="checkbox">
+                                            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
+                                            Remember me
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="control is-horizontal">
+                                    <div class="control-label">
+                                        <!--spacer-->
+                                    </div>
+                                    <div class="control is-horizontal">
+                                        <div class="control is-grouped">
+                                            <p class="control">
+                                                <button class="button is-primary">Submit</button>
+                                            </p>
+                                            <p class="control is-expanded">
+                                                <a href="{{ url('/password/reset') }}">
+                                                    Forgot password
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-@endsection
+    </section>
+</div>
+
+<!-- Scripts -->
+<script src="/api/lang/trans.js"></script>
+<script src="{{ asset('js/app.js') }}"></script>
+@stack('scripts')
+</body>
+</html>
