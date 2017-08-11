@@ -22,13 +22,16 @@
                         <img class="nav-logo" src="/images/e-brief-logo.png" alt="E Briefing App Logo">
                     </a>
 
-                    <p>
-                        <a href="{{ route('trips.index') }}">Trips</a> | <a href="{{ route('users.index') }}">User Management</a>
-                    </p><br>
-
-                    @stack('nav-menu')
+                    <aside class="menu">
+                        <ul class="menu-list">
+                            <li><a href="{{ route('trips.index') }}">Trips</a></li>
+                            <li><a href="{{ route('users.index') }}">Users</a></li>
+                        </ul>
+                    </aside>
 
                     <hr>
+
+                    @stack('nav-menu')
 
                     @if (Auth::guest())
                         <a class="nav-item is-tab" href="{{ url('/login') }}">Login</a>

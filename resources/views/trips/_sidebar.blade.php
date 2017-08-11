@@ -9,3 +9,5 @@
         <li><a href="{{ route('trips.documents.index', $trip) }}">Documents</a></li>
     </ul>
 </aside>
+
+<hr>
