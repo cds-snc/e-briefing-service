@@ -29,11 +29,4 @@ class DayController extends Controller
 
         return redirect()->route('trips.days.index', $day->trip);
     }
-
-    public function destroy(Day $day)
-    {
-        $day->delete();
-
-        return redirect()->route('trips.days.index', $day->trip);
-    }
 }

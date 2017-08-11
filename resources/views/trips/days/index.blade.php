@@ -26,9 +26,19 @@
                                 <p class="title is-5">{{ $day->date }}</p>
                             </div>
                             <footer class="card-footer">
-                                <a href="{{ route('days.events.index', $day) }}" class="card-footer-item">Events</a>
-                                <a href="{{ route('days.edit', $day) }}" class="card-footer-item">Edit</a>
-                                <a href="" class="card-footer-item">Delete</a>
+                                <div class="card-footer-item">
+                                    <a href="{{ route('days.events.index', $day) }}" class="button is-link">Events</a>
+                                </div>
+                                <div class="card-footer-item">
+                                    <a href="{{ route('days.edit', $day) }}" class="button is-link">Edit</a>
+                                </div>
+                                <div class="card-footer-item">
+                                    <form class="is-inline" action="{{ route('trips.days.destroy', ['trip' => $trip, 'day' => $day]) }}" method="POST">
+                                        {{ method_field('DELETE') }}
+                                        {{ csrf_field() }}
+                                        <button type="submit" class="button is-link">Delete</button>
+                                    </form>
+                                </div>
                             </footer>
                         </div>
                     </div>
