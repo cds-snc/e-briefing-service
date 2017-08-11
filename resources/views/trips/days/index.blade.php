@@ -27,7 +27,7 @@
                             </div>
                             <footer class="card-footer">
                                 <div class="card-footer-item">
-                                    <a href="{{ route('days.events.index', $day) }}" class="button is-link">Events</a>
+                                    <a href="{{ route('days.events.index', $day) }}" class="button is-link badge" data-badge="{{ $day->events->count() }}">Events</a>
                                 </div>
                                 <div class="card-footer-item">
                                     <a href="{{ route('days.edit', $day) }}" class="button is-link">Edit</a>
