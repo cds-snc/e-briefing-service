@@ -1,6 +1,10 @@
 @import "node_modules/bulma/bulma";
 @import "node_modules/font-awesome/css/font-awesome";
 
+$badge-font-size: $size-normal;
+
+@import "bulma-extensions/_all";
+
 nav.sidebar {
  padding: 20px;
 }
