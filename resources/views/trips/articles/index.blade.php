@@ -27,18 +27,13 @@
                                 </span>
                             @endif
                         </h3>
-                        <p>
-                            <a href="{{ route('trips.articles.edit', ['trip' => $trip, 'article' => $article]) }}">Edit</a> |
+                        <a href="{{ route('trips.articles.edit', ['trip' => $trip, 'article' => $article]) }}" class="button is-default">Edit</a>
 
-                            <a href="{{ route('trips.articles.destroy', ['trip' => $trip, 'article' => $article]) }}"
-                               onclick="event.preventDefault(); document.getElementById('article-delete-form').submit();">
-                                Delete</a>
-
-                        <form id="article-delete-form" action="{{ route('trips.articles.destroy', ['trip' => $trip, 'article' => $article]) }}" method="POST" style="display: none;">
+                        <form class="is-inline" id="article-delete-form" action="{{ route('trips.articles.destroy', ['trip' => $trip, 'article' => $article]) }}" method="POST">
                             {{ method_field('DELETE') }}
                             {{ csrf_field() }}
+                            <button type="submit" class="button is-danger">Delete</button>
                         </form>
-                        </p>
                     </div>
                 </div>
             @endforeach

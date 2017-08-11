@@ -29,7 +29,14 @@
                             <div class="column">
                                 <h3 class="title is-3">{{ $person->name }}</h3>
                                 <p><strong>{{ $person->title or 'no title' }}</strong> | {{ $person->telephone }}</p>
-                                <p><a href="{{ route('trips.people.edit', ['trip' => $trip, 'person' => $person]) }}">Edit</a> | <a href="">Delete</a></p>
+
+                                <a href="{{ route('trips.people.edit', ['trip' => $trip, 'person' => $person]) }}" class="button is-default">Edit</a>
+
+                                <form class="is-inline" action="{{ route('trips.people.destroy', ['trip' => $trip, 'person' => $person]) }}" method="POST">
+                                    {{ method_field('DELETE') }}
+                                    {{ csrf_field() }}
+                                    <button type="submit" class="button is-danger">Delete</button>
+                                </form>
                             </div>
                         </div>
                     </div>

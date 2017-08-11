@@ -130,11 +130,15 @@ class TripPeopleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Trip $trip
+     * @param Person $person
      * @return \Illuminate\Http\Response
+     * @internal param int $id
      */
-    public function destroy($id)
+    public function destroy(Trip $trip, Person $person)
     {
-        //
+        $person->delete();
+
+        return redirect()->back()->with('success', 'Person deleted');
     }
 }
