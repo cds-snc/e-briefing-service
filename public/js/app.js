@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 53);
+/******/ 	return __webpack_require__(__webpack_require__.s = 54);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -1013,8 +1013,16 @@ module.exports = function bind(fn, thisArg) {
 
 /***/ }),
 /* 10 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tinymce_tinymce__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tinymce_tinymce___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_tinymce_tinymce__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_tinymce_themes_modern_theme__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_tinymce_themes_modern_theme___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_tinymce_themes_modern_theme__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_tinymce_plugins_advlist_plugin__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_tinymce_plugins_advlist_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_tinymce_plugins_advlist_plugin__);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -1024,7 +1032,7 @@ module.exports = function bind(fn, thisArg) {
 
 __webpack_require__(34);
 
-window.Vue = __webpack_require__(50);
+window.Vue = __webpack_require__(51);
 
 /**
  * Lang Helper
@@ -1046,12 +1054,15 @@ Vue.prototype.__ = function (string, args) {
     return string;
 };
 
-var tinymce = __webpack_require__(41);
-__webpack_require__(40);
 
-tinymce.init({
+
+
+
+__WEBPACK_IMPORTED_MODULE_0_tinymce_tinymce___default.a.init({
     selector: '.wysiwyg',
-    menubar: false
+    menubar: false,
+    plugins: ['advlist'],
+    toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image'
 });
 
 /**
@@ -1060,11 +1071,11 @@ tinymce.init({
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', __webpack_require__(45));
+Vue.component('example', __webpack_require__(46));
 
-Vue.component('add-participant-modal', __webpack_require__(44));
-Vue.component('add-contact-modal', __webpack_require__(42));
-Vue.component('add-document-modal', __webpack_require__(43));
+Vue.component('add-participant-modal', __webpack_require__(45));
+Vue.component('add-contact-modal', __webpack_require__(43));
+Vue.component('add-document-modal', __webpack_require__(44));
 
 var app = new Vue({
     el: '#app',
@@ -2406,7 +2417,7 @@ function flush() {
 function attemptVertx() {
   try {
     var r = require;
-    var vertx = __webpack_require__(52);
+    var vertx = __webpack_require__(53);
     vertxNext = vertx.runOnLoop || vertx.runOnContext;
     return useVertxTimer();
   } catch (e) {
@@ -30781,7 +30792,7 @@ return jQuery;
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(51)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(52)(module)))
 
 /***/ }),
 /* 38 */
@@ -31037,6 +31048,295 @@ exports.clearImmediate = clearImmediate;
 
 /***/ }),
 /* 40 */
+/***/ (function(module, exports) {
+
+(function () {
+
+var defs = {}; // id -> {dependencies, definition, instance (possibly undefined)}
+
+// Used when there is no 'main' module.
+// The name is probably (hopefully) unique so minification removes for releases.
+var register_3795 = function (id) {
+  var module = dem(id);
+  var fragments = id.split('.');
+  var target = Function('return this;')();
+  for (var i = 0; i < fragments.length - 1; ++i) {
+    if (target[fragments[i]] === undefined)
+      target[fragments[i]] = {};
+    target = target[fragments[i]];
+  }
+  target[fragments[fragments.length - 1]] = module;
+};
+
+var instantiate = function (id) {
+  var actual = defs[id];
+  var dependencies = actual.deps;
+  var definition = actual.defn;
+  var len = dependencies.length;
+  var instances = new Array(len);
+  for (var i = 0; i < len; ++i)
+    instances[i] = dem(dependencies[i]);
+  var defResult = definition.apply(null, instances);
+  if (defResult === undefined)
+     throw 'module [' + id + '] returned undefined';
+  actual.instance = defResult;
+};
+
+var def = function (id, dependencies, definition) {
+  if (typeof id !== 'string')
+    throw 'module id must be a string';
+  else if (dependencies === undefined)
+    throw 'no dependencies for ' + id;
+  else if (definition === undefined)
+    throw 'no definition function for ' + id;
+  defs[id] = {
+    deps: dependencies,
+    defn: definition,
+    instance: undefined
+  };
+};
+
+var dem = function (id) {
+  var actual = defs[id];
+  if (actual === undefined)
+    throw 'module [' + id + '] was undefined';
+  else if (actual.instance === undefined)
+    instantiate(id);
+  return actual.instance;
+};
+
+var req = function (ids, callback) {
+  var len = ids.length;
+  var instances = new Array(len);
+  for (var i = 0; i < len; ++i)
+    instances.push(dem(ids[i]));
+  callback.apply(null, callback);
+};
+
+var ephox = {};
+
+ephox.bolt = {
+  module: {
+    api: {
+      define: def,
+      require: req,
+      demand: dem
+    }
+  }
+};
+
+var define = def;
+var require = req;
+var demand = dem;
+// this helps with minificiation when using a lot of global references
+var defineGlobal = function (id, ref) {
+  define(id, [], function () { return ref; });
+};
+/*jsc
+["tinymce.plugins.advlist.Plugin","tinymce.core.PluginManager","tinymce.core.util.Tools","global!tinymce.util.Tools.resolve"]
+jsc*/
+defineGlobal("global!tinymce.util.Tools.resolve", tinymce.util.Tools.resolve);
+/**
+ * ResolveGlobal.js
+ *
+ * Released under LGPL License.
+ * Copyright (c) 1999-2017 Ephox Corp. All rights reserved
+ *
+ * License: http://www.tinymce.com/license
+ * Contributing: http://www.tinymce.com/contributing
+ */
+
+define(
+  'tinymce.core.PluginManager',
+  [
+    'global!tinymce.util.Tools.resolve'
+  ],
+  function (resolve) {
+    return resolve('tinymce.PluginManager');
+  }
+);
+
+/**
+ * ResolveGlobal.js
+ *
+ * Released under LGPL License.
+ * Copyright (c) 1999-2017 Ephox Corp. All rights reserved
+ *
+ * License: http://www.tinymce.com/license
+ * Contributing: http://www.tinymce.com/contributing
+ */
+
+define(
+  'tinymce.core.util.Tools',
+  [
+    'global!tinymce.util.Tools.resolve'
+  ],
+  function (resolve) {
+    return resolve('tinymce.util.Tools');
+  }
+);
+
+/**
+ * Plugin.js
+ *
+ * Released under LGPL License.
+ * Copyright (c) 1999-2017 Ephox Corp. All rights reserved
+ *
+ * License: http://www.tinymce.com/license
+ * Contributing: http://www.tinymce.com/contributing
+ */
+
+/**
+ * This class contains all core logic for the advlist plugin.
+ *
+ * @class tinymce.plugins.advlist.Plugin
+ * @private
+ */
+define(
+  'tinymce.plugins.advlist.Plugin',
+  [
+    'tinymce.core.PluginManager',
+    'tinymce.core.util.Tools'
+  ],
+  function (PluginManager, Tools) {
+    PluginManager.add('advlist', function (editor) {
+      var olMenuItems, ulMenuItems;
+
+      var hasPlugin = function (editor, plugin) {
+        var plugins = editor.settings.plugins ? editor.settings.plugins : '';
+        return Tools.inArray(plugins.split(/[ ,]/), plugin) !== -1;
+      };
+
+      function isChildOfBody(elm) {
+        return editor.$.contains(editor.getBody(), elm);
+      }
+
+      function isListNode(node) {
+        return node && (/^(OL|UL|DL)$/).test(node.nodeName) && isChildOfBody(node);
+      }
+
+      function buildMenuItems(listName, styleValues) {
+        var items = [];
+        if (styleValues) {
+          Tools.each(styleValues.split(/[ ,]/), function (styleValue) {
+            items.push({
+              text: styleValue.replace(/\-/g, ' ').replace(/\b\w/g, function (chr) {
+                return chr.toUpperCase();
+              }),
+              data: styleValue == 'default' ? '' : styleValue
+            });
+          });
+        }
+        return items;
+      }
+
+      olMenuItems = buildMenuItems('OL', editor.getParam(
+        "advlist_number_styles",
+        "default,lower-alpha,lower-greek,lower-roman,upper-alpha,upper-roman"
+      ));
+
+      ulMenuItems = buildMenuItems('UL', editor.getParam("advlist_bullet_styles", "default,circle,disc,square"));
+
+      function applyListFormat(listName, styleValue) {
+        editor.undoManager.transact(function () {
+          var list, dom = editor.dom, sel = editor.selection;
+
+          // Check for existing list element
+          list = dom.getParent(sel.getNode(), 'ol,ul');
+
+          // Switch/add list type if needed
+          if (!list || list.nodeName != listName || styleValue === false) {
+            var detail = {
+              'list-style-type': styleValue ? styleValue : ''
+            };
+
+            editor.execCommand(listName == 'UL' ? 'InsertUnorderedList' : 'InsertOrderedList', false, detail);
+          }
+
+          list = dom.getParent(sel.getNode(), 'ol,ul');
+          if (list) {
+            Tools.each(dom.select('ol,ul', list).concat([list]), function (list) {
+              if (list.nodeName !== listName && styleValue !== false) {
+                list = dom.rename(list, listName);
+              }
+
+              dom.setStyle(list, 'listStyleType', styleValue ? styleValue : null);
+              list.removeAttribute('data-mce-style');
+            });
+          }
+
+          editor.focus();
+        });
+      }
+
+      function updateSelection(e) {
+        var listStyleType = editor.dom.getStyle(editor.dom.getParent(editor.selection.getNode(), 'ol,ul'), 'listStyleType') || '';
+
+        e.control.items().each(function (ctrl) {
+          ctrl.active(ctrl.settings.data === listStyleType);
+        });
+      }
+
+      var listState = function (listName) {
+        return function () {
+          var self = this;
+
+          editor.on('NodeChange', function (e) {
+            var lists = Tools.grep(e.parents, isListNode);
+            self.active(lists.length > 0 && lists[0].nodeName === listName);
+          });
+        };
+      };
+
+      if (hasPlugin(editor, "lists")) {
+        editor.addCommand('ApplyUnorderedListStyle', function (ui, value) {
+          applyListFormat('UL', value['list-style-type']);
+        });
+
+        editor.addCommand('ApplyOrderedListStyle', function (ui, value) {
+          applyListFormat('OL', value['list-style-type']);
+        });
+
+        editor.addButton('numlist', {
+          type: (olMenuItems.length > 0) ? 'splitbutton' : 'button',
+          tooltip: 'Numbered list',
+          menu: olMenuItems,
+          onPostRender: listState('OL'),
+          onshow: updateSelection,
+          onselect: function (e) {
+            applyListFormat('OL', e.control.settings.data);
+          },
+          onclick: function () {
+            applyListFormat('OL', false);
+          }
+        });
+
+        editor.addButton('bullist', {
+          type: (ulMenuItems.length > 0) ? 'splitbutton' : 'button',
+          tooltip: 'Bullet list',
+          onPostRender: listState('UL'),
+          menu: ulMenuItems,
+          onshow: updateSelection,
+          onselect: function (e) {
+            applyListFormat('UL', e.control.settings.data);
+          },
+          onclick: function () {
+            applyListFormat('UL', false);
+          }
+        });
+      }
+    });
+
+    return function () { };
+
+  }
+);
+dem('tinymce.plugins.advlist.Plugin')();
+})();
+
+
+/***/ }),
+/* 41 */
 /***/ (function(module, exports) {
 
 (function () {
@@ -32723,7 +33023,7 @@ dem('tinymce.themes.modern.Theme')();
 
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(setImmediate) {// 4.6.4 (2017-06-13)
@@ -88546,14 +88846,14 @@ dem('tinymce.core.api.Main')();
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39).setImmediate))
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
   __webpack_require__(30),
   /* template */
-  __webpack_require__(49),
+  __webpack_require__(50),
   /* scopeId */
   null,
   /* cssModules */
@@ -88580,14 +88880,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
   __webpack_require__(31),
   /* template */
-  __webpack_require__(48),
+  __webpack_require__(49),
   /* scopeId */
   null,
   /* cssModules */
@@ -88614,14 +88914,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
   __webpack_require__(32),
   /* template */
-  __webpack_require__(47),
+  __webpack_require__(48),
   /* scopeId */
   null,
   /* cssModules */
@@ -88648,14 +88948,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
   __webpack_require__(33),
   /* template */
-  __webpack_require__(46),
+  __webpack_require__(47),
   /* scopeId */
   null,
   /* cssModules */
@@ -88682,7 +88982,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -88711,7 +89011,7 @@ if (false) {
 }
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -88808,7 +89108,7 @@ if (false) {
 }
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -88905,7 +89205,7 @@ if (false) {
 }
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -89002,7 +89302,7 @@ if (false) {
 }
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -98701,7 +99001,7 @@ module.exports = Vue$3;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -98729,13 +99029,13 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(10);

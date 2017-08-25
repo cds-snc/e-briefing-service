@@ -29,12 +29,17 @@ Vue.prototype.__ = (string, args) => {
     return string;
 };
 
-var tinymce = require('tinymce/tinymce');
-require('tinymce/themes/modern/theme');
+import tinymce from 'tinymce/tinymce';
+import 'tinymce/themes/modern/theme';
+import 'tinymce/plugins/advlist/plugin';
 
 tinymce.init({
     selector: '.wysiwyg',
-    menubar: false
+    menubar: false,
+    plugins: [
+        'advlist'
+    ],
+    toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image'
 });
 
 /**
