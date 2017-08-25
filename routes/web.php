@@ -22,6 +22,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('users', 'UserController');
 Route::resource('trips', 'TripController');
 
+Route::post('trips/{trip}/generate', ['as' => 'trips.generate', 'uses' => 'GenerateTripPackage']);
+
 Route::resource('days', 'DayController', ['only' => [
     'edit', 'update', 'destroy'
 ]]);

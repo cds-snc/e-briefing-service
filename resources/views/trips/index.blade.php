@@ -36,6 +36,17 @@
                                     {{ __('manage') }}
                                 </span>
                             </a>
+                            <form class="is-inline" action="{{ route('trips.generate', $trip) }}" method="POST">
+                                {{ csrf_field() }}
+                                <button type="submit" class="button">
+                                    <span class="icon">
+                                        <i class="fa fa-download"></i>
+                                    </span>
+                                    <span>
+                                        {{ __('generate package') }}
+                                    </span>
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
