@@ -49,4 +49,11 @@ class EventController extends Controller
 
         return redirect()->route('events.show', $event)->with('success', 'Event saved!');
     }
+
+    public function destroy(Event $event)
+    {
+        $event->delete();
+
+        return redirect()->back()->with('Event deleted');
+    }
 }

@@ -33,10 +33,14 @@
                         @if($event->is_meal)
                             <span class="fa fa-cutlery"></span>
                         @endif
-                        <p>
-                            <a href="{{ route('events.show', ['event' => $event]) }}">Manage</a> |
-                            <a href="">Delete</a>
-                        </p>
+
+                        <a href="{{ route('events.show', ['event' => $event]) }}" class="button is-default">Manage</a>
+
+                        <form class="is-inline" action="{{ route('events.destroy', ['event' => $event]) }}" method="POST">
+                            {{ method_field('DELETE') }}
+                            {{ csrf_field() }}
+                            <button type="submit" class="button is-danger">Delete</button>
+                        </form>
                     </div>
                 </div>
             @endforeach
