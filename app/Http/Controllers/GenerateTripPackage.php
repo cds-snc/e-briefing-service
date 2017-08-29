@@ -8,13 +8,15 @@ use App\Document;
 use App\Event;
 use App\Person;
 use App\Trip;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class GenerateTripPackage extends Controller
 {
     public function __invoke(Trip $trip)
     {
+        // Delete old package
+        Storage::deleteDirectory('package');
+
         $this->generateTripJson($trip);
 
         return redirect()->back()->with('success', 'Files generated');
@@ -35,10 +37,14 @@ class GenerateTripPackage extends Controller
             }
         }
 
+        $this->generateDocumentsJson($trip);
+
         foreach ($trip->documents as $document)
         {
             $this->generateDocumentJson($document);
         }
+
+        $this->generateArticlesJson($trip);
 
         foreach ($trip->articles as $article)
         {
@@ -58,11 +64,19 @@ class GenerateTripPackage extends Controller
         Storage::put('package/days/' . $day->id . '.json', $json);
     }
 
+    protected function generateDocumentsJson(Trip $trip)
+    {
+        $documents = $trip->documents->groupBy('document_type');
+
+        Storage::put('package/documents.json', $documents->toJson());
+    }
+
     protected function generateDocumentJson(Document $document)
     {
         $json = $document->toJson();
 
         Storage::put('package/documents/' . $document->id . '.json', $json);
+        Storage::copy('public/' . $document->file, 'package/assets/' . $document->file);
     }
 
     protected function generateEventJson(Event $event)
@@ -70,6 +84,13 @@ class GenerateTripPackage extends Controller
         $json = Event::with('contacts', 'participants', 'documents')->find($event->id)->toJson();
 
         Storage::put('package/events/' . $event->id . '.json', $json);
+    }
+
+    protected function generateArticlesJson(Trip $trip)
+    {
+        $json = $trip->articles->toJson();
+
+        Storage::put('package/articles.json', $json);
     }
 
     protected function generateArticleJson(Article $article)
@@ -84,5 +105,9 @@ class GenerateTripPackage extends Controller
         $json = $person->toJson();
 
         Storage::put('package/people/' . $person->id . '.json', $json);
+
+        if ($person->image) {
+            Storage::copy('public/' . $person->image, 'package/assets/' . $person->image);
+        }
     }
 }
