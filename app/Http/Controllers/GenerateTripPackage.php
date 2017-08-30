@@ -51,6 +51,8 @@ class GenerateTripPackage extends Controller
             $this->generateArticleJson($article);
         }
 
+        $this->generatePeopleJson($trip);
+
         foreach ($trip->people as $person)
         {
             $this->generatePersonJson($person);
@@ -98,6 +100,13 @@ class GenerateTripPackage extends Controller
         $json = Article::with('documents')->find($article->id)->toJson();
 
         Storage::put('package/articles/' . $article->id . '.json', $json);
+    }
+
+    protected function generatePeopleJson(Trip $trip)
+    {
+        $json = $trip->people->toJson();
+
+        Storage::put('package/people.json', $json);
     }
 
     protected function generatePersonJson(Person $person)
