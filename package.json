@@ -22,7 +22,6 @@
     "bootbox": "^4.4.0",
     "bulma": "^0.5.1",
     "es6-promise": "^4.1.0",
-    "font-awesome": "^4.7.0",
-    "tinymce": "^4.6.4"
+    "font-awesome": "^4.7.0"
   }
 }

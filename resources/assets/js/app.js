@@ -29,19 +29,6 @@ Vue.prototype.__ = (string, args) => {
     return string;
 };
 
-import tinymce from 'tinymce/tinymce';
-import 'tinymce/themes/modern/theme';
-import 'tinymce/plugins/advlist/plugin';
-
-tinymce.init({
-    selector: '.wysiwyg',
-    menubar: false,
-    plugins: [
-        'advlist'
-    ],
-    toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image'
-});
-
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
