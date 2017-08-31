@@ -8,6 +8,11 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+window.marked = require('marked');
+
+marked.setOptions({
+    breaks: true
+});
 
 /**
  * Lang Helper
@@ -40,6 +45,7 @@ Vue.component('example', require('./components/Example.vue'));
 Vue.component('add-participant-modal', require('./components/AddParticipantModal.vue'));
 Vue.component('add-contact-modal', require('./components/AddContactModal.vue'));
 Vue.component('add-document-modal', require('./components/AddDocumentModal.vue'));
+Vue.component('markdown-textarea', require('./components/MarkdownTextarea.vue'));
 
 const app = new Vue({
     el: '#app',

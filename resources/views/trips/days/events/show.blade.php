@@ -36,12 +36,10 @@
                             <dd>{{ $event->location_postal }}</dd>
                         @endif
                         @if($event->description)
-                            <dt>Description</dt>
-                            <dd>{{ $event->description }}</dd>
+                            {!! Markdown::setBreaksEnabled(true)->parse($event->description) !!}
                         @endif
                         @if($event->body)
-                            <dt>Body</dt>
-                            <dd>{!! $event->body !!}</dd>
+                            {!! Markdown::setBreaksEnabled(true)->parse($event->body) !!}
                         @endif
                     </dl>
                 </div>

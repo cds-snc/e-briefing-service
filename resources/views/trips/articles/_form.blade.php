@@ -8,7 +8,7 @@
 <div class="field">
     <label class="label" for="body">Body</label>
     <p class="control">
-        <textarea class="textarea wysiwyg" id="body" name="body">{{ old('body', $article->body) }}</textarea>
+        <markdown-textarea name="body" id="body" contents="{{ old('body', $article->body) }}"></markdown-textarea>
     </p>
 </div>
 

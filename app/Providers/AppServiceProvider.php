@@ -23,6 +23,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        // Make it a little easier to work with Parsedown
+        $this->app->singleton('parsedown', function() {
+            return new \Parsedown;
+        });
     }
 }
