@@ -9,6 +9,7 @@ use Spatie\EloquentSortable\SortableTrait;
 class Article extends Model implements Sortable
 {
     protected $guarded = [];
+    protected $appends = ['body_html'];
 
     use SortableTrait;
 
@@ -25,5 +26,10 @@ class Article extends Model implements Sortable
     public function documents()
     {
         return $this->belongsToMany(Document::class);
+    }
+
+    public function getBodyHtmlAttribute()
+    {
+        return \Markdown::text($this->body);
     }
 }

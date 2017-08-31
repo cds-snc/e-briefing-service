@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Person extends Model
 {
     protected $guarded = [];
-    protected $appends = ['name', 'image_url'];
+    protected $appends = ['name', 'image_url', 'body_html'];
 
     public function trip()
     {
@@ -27,5 +27,10 @@ class Person extends Model
     public function getImageUrlAttribute()
     {
         return url($this->image);
+    }
+
+    public function getBodyHtmlAttribute()
+    {
+        return \Markdown::text($this->body);
     }
 }

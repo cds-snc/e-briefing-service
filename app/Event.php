@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
     protected $guarded = [];
+    protected $appends = ['description_html', 'body_html'];
 
     public function day()
     {
@@ -51,5 +52,15 @@ class Event extends Model
     public function getAvailableDocumentsAttribute()
     {
         return $this->trip->documents->whereNotIn('id', $this->documents->pluck('id'));
+    }
+
+    public function getDescriptionHtmlAttribute()
+    {
+        return \Markdown::text($this->description);
+    }
+
+    public function getBodyHtmlAttribute()
+    {
+        return \Markdown::text($this->body);
     }
 }
