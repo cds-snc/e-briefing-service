@@ -41,17 +41,17 @@ class Event extends Model
 
     public function getAvailableContactsAttribute()
     {
-        return $this->trip->people->whereNotIn('id', $this->contacts->pluck('id'));
+        return $this->trip->people->diff($this->contacts);
     }
 
     public function getAvailableParticipantsAttribute()
     {
-        return $this->trip->people->whereNotIn('id', $this->participants->pluck('id'));
+        return $this->trip->people->diff($this->participants);
     }
 
     public function getAvailableDocumentsAttribute()
     {
-        return $this->trip->documents->whereNotIn('id', $this->documents->pluck('id'));
+        return $this->trip->documents->diff($this->documents);
     }
 
     public function getDescriptionHtmlAttribute()
