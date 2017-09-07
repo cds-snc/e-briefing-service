@@ -8,6 +8,8 @@ use App\Document;
 use App\Event;
 use App\Person;
 use App\Trip;
+use Carbon\Carbon;
+use Chumper\Zipper\Facades\Zipper;
 use Illuminate\Support\Facades\Storage;
 
 class GenerateTripPackage extends Controller
@@ -18,8 +20,9 @@ class GenerateTripPackage extends Controller
         Storage::deleteDirectory('package');
 
         $this->generateTripJson($trip);
+        $zip = $this->zipPackage();
 
-        return redirect()->back()->with('success', 'Files generated');
+        return response()->download($zip);
     }
 
     protected function generateTripJson(Trip $trip)
@@ -118,5 +121,15 @@ class GenerateTripPackage extends Controller
         if ($person->image) {
             Storage::copy('public/' . $person->image, 'package/assets/' . $person->image);
         }
+    }
+
+    protected function zipPackage()
+    {
+        $files = glob(storage_path('app/package') . '/*');
+        $zip = storage_path('app/package/') . 'package-' . Carbon::now()->format('YmdHis') . '.zip';
+
+        Zipper::make($zip)->add($files)->close();
+
+        return $zip;
     }
 }
