@@ -1,9 +1,18 @@
+@import "variables";
 @import "../../../node_modules/bulma/bulma";
+@import "overrides";
 @import "../../../node_modules/font-awesome/css/font-awesome";
 
 $badge-font-size: $size-normal;
 
 @import "bulma-extensions/_all";
+
+
+.nav {
+  background-color: #2fa4e7;
+  background-image: linear-gradient(180deg,#54b4eb 0%,#2fa4e7 60%,#1d9ce5 100%);
+  color: #fff;
+}
 
 nav.sidebar {
  padding: 20px;

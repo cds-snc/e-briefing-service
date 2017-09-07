@@ -15,42 +15,41 @@
 </head>
 <body>
     <div id="app">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a href="{{ url('/') }}">
+                        <img class="nav-logo" src="/images/e-brief-logo.png" alt="E Briefing App Logo">
+                    </a>
+                </div>
+                <div class="navbar-menu">
+                    <a href="{{ route('trips.index') }}" class="navbar-item">Trips</a>
+                    <a href="{{ route('users.index') }}" class="navbar-item">Users</a>
+
+                    <div class="navbar-end">
+                        @if (Auth::guest())
+                            <a class="navbar-item" href="{{ url('/login') }}">Login</a>
+                            <a class="navbar-item" href="{{ url('/register') }}">Register</a>
+                        @else
+                            <a class="navbar-item" href="{{ url('/logout') }}"
+                               onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                Logout</a>
+
+                            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </nav>
+
         <section class="section">
             <div class="container">
                 <div class="columns">
-                    <div class="column is-3">
-                        <nav class="sidebar">
-                            <a href="{{ url('/') }}">
-                                <img class="nav-logo" src="/images/e-brief-logo.png" alt="E Briefing App Logo">
-                            </a>
-
-                            <aside class="menu">
-                                <ul class="menu-list">
-                                    <li><a href="{{ route('trips.index') }}">Trips</a></li>
-                                    <li><a href="{{ route('users.index') }}">Users</a></li>
-                                </ul>
-                            </aside>
-
-                            <hr>
-
-                            @stack('nav-menu')
-
-                            @if (Auth::guest())
-                                <a class="nav-item is-tab" href="{{ url('/login') }}">Login</a>
-                                <a class="nav-item is-tab" href="{{ url('/register') }}">Register</a>
-                            @else
-                                <div>{{ auth()->user()->name }}</div>
-
-                                <a href="{{ url('/logout') }}"
-                                   onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
-                                    Logout</a>
-
-                                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            @endif
-                        </nav>
+                    <div class="column is-2">
+                        @stack('nav-menu')
                     </div>
                     <div class="column">
                         <div class="content">
