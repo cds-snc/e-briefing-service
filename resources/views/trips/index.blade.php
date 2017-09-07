@@ -2,7 +2,14 @@
 
 @section('content')
     <h1 class="title">{{ __('Trips') }}
-        <a href="{{ route('trips.create') }}" class="button pull-right">{{ __('Create a Trip') }}</a>
+        <a href="{{ route('trips.create') }}" class="is-size-6">
+            <span class="icon">
+                <i class="fa fa-plus-circle"></i>
+            </span>
+            <span>
+                {{ __('Create a Trip') }}
+            </span>
+        </a>
     </h1>
 
     @include('layouts.flash')
@@ -26,14 +33,14 @@
                                 <span class="icon">
                                     <i class="fa fa-edit"></i>
                                 </span>
-                                <span>{{ __('edit') }}</span>
+                                <span>{{ __('Edit') }}</span>
                             </a>
                             <a href="{{ route('trips.days.index', $trip) }}" class="button">
                                 <span class="icon">
                                     <i class="fa fa-cogs"></i>
                                 </span>
                                 <span>
-                                    {{ __('manage') }}
+                                    {{ __('Manage') }}
                                 </span>
                             </a>
                             <form class="is-inline" action="{{ route('trips.generate', $trip) }}" method="POST">
@@ -43,7 +50,7 @@
                                         <i class="fa fa-download"></i>
                                     </span>
                                     <span>
-                                        {{ __('generate package') }}
+                                        {{ __('Generate package') }}
                                     </span>
                                 </button>
                             </form>

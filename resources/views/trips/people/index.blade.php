@@ -8,7 +8,12 @@
 
         <div class="column">
             <h1 class="title">{{ $trip->name }} People
-                <a href="{{ route('trips.people.create', $trip) }}" class="button pull-right">Add a Person</a>
+                <a href="{{ route('trips.people.create', $trip) }}" class="is-size-6">
+                    <span class="icon">
+                        <i class="fa fa-plus-circle"></i>
+                    </span>
+                    Add a Person
+                </a>
             </h1>
 
             @include('layouts.flash')

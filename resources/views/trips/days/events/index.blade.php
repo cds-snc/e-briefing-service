@@ -8,7 +8,12 @@
 
         <div class="column">
             <h1 class="title">{{ $day->trip->name }} : {{ $day->name }}
-                <a href="{{ route('days.events.create', $day) }}" class="button pull-right">Add an Event</a>
+                <a href="{{ route('days.events.create', $day) }}" class="is-size-6">
+                    <span class="icon">
+                        <i class="fa fa-plus-circle"></i>
+                    </span>
+                    Add an Event
+                </a>
             </h1>
 
             @include('layouts.flash')
@@ -29,7 +34,7 @@
                                 - {{ $event->time_to }}
                             @endif
                         </p>
-                        <p>{{ $event->description }}</p>
+                        <p>{!! $event->description_html !!}</p>
                         @if($event->is_meal)
                             <span class="fa fa-cutlery"></span>
                         @endif
