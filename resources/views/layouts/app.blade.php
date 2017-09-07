@@ -18,8 +18,9 @@
         <nav class="navbar">
             <div class="container">
                 <div class="navbar-brand">
-                    <a href="{{ url('/') }}">
-                        <img class="nav-logo" src="/images/e-brief-logo.png" alt="E Briefing App Logo">
+                    <a class="navbar-item" href="{{ url('/') }}">
+                        e-Brief Management
+                        <!-- <img class="nav-logo" src="/images/e-brief-logo.png" alt="E Briefing App Logo"> -->
                     </a>
                 </div>
                 <div class="navbar-menu">
@@ -48,9 +49,8 @@
         <section class="section">
             <div class="container">
                 <div class="columns">
-                    <div class="column is-2">
-                        @stack('nav-menu')
-                    </div>
+                    @stack('nav-menu')
+
                     <div class="column">
                         <div class="content">
                             @yield('content')
