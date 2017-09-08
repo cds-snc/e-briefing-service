@@ -16,5 +16,10 @@ class UsersTableSeeder extends Seeder
             'email' => 'dave.samojlenko@tbs-sct.gc.ca',
             'password' => bcrypt('secret'),
         ]);
+        DB::table('users')->insert([
+            'name' => 'Melissa Poon',
+            'email' => 'melissa.poon@tbs-sct.gc.ca',
+            'password' => bcrypt('secret')
+        ]);
     }
 }
