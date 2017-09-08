@@ -16,7 +16,7 @@
                 {{ csrf_field() }}
 
                 @if($person->image)
-                    <img src="{{ url($person->image) }}" class="person-photo">
+                    <img src="{{ url('storage/' . $person->image) }}" class="person-photo">
                 @endif
 
                 <div class="field">
