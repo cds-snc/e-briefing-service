@@ -27,7 +27,7 @@ class GenerateTripPackage extends Controller
 
     protected function generateTripJson(Trip $trip)
     {
-        $json = $trip->with('days')->first()->toJson();
+        $json = Trip::with('days')->find($trip->id)->toJson();
 
         Storage::put('package/trip.json', $json);
 
