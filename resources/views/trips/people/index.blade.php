@@ -33,7 +33,12 @@
                             @endif
                             <div class="column">
                                 <h3 class="title is-3">{{ $person->name }}</h3>
-                                <p><strong>{{ $person->title or 'no title' }}</strong> | {{ $person->telephone }}</p>
+                                <p>
+                                    @if($person->title)
+                                        <strong>{{ $person->title }}</strong> |
+                                    @endif
+                                    {{ $person->telephone }}
+                                </p>
 
                                 <a href="{{ route('trips.people.edit', ['trip' => $trip, 'person' => $person]) }}" class="button is-default">Edit</a>
 
