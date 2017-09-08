@@ -28,7 +28,7 @@
                         <div class="columns">
                             @if($person->image)
                                 <div class="column is-3">
-                                    <img src="{{ url($person->image) }}" class="person-photo">
+                                    <img src="{{ url('storage/' . $person->image) }}" class="person-photo">
                                 </div>
                             @endif
                             <div class="column">
