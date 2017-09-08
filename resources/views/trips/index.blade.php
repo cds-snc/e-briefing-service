@@ -28,7 +28,7 @@
                 @foreach($trips as $trip)
                     <tr>
                         <td>{{ $trip->name }}</td>
-                        <td style="text-align: right;">
+                        <td class="has-text-right">
                             <a href="{{ route('trips.edit', $trip) }}" class="button">
                                 <span class="icon">
                                     <i class="fa fa-edit"></i>
@@ -43,9 +43,9 @@
                                     {{ __('Manage') }}
                                 </span>
                             </a>
-                            <form class="is-inline" action="{{ route('trips.generate', $trip) }}" method="POST">
+                            <form class="is-inline download-form" action="{{ route('trips.generate', $trip) }}" method="POST">
                                 {{ csrf_field() }}
-                                <button type="submit" class="button">
+                                <button type="submit" class="button download-button">
                                     <span class="icon">
                                         <i class="fa fa-download"></i>
                                     </span>

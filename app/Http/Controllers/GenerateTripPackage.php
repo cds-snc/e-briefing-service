@@ -125,7 +125,7 @@ class GenerateTripPackage extends Controller
 
     protected function zipPackage()
     {
-        $files = glob(storage_path('app/package') . '/*');
+        $files = glob(storage_path('app/package'));
         $zip = storage_path('app/package/') . 'package-' . Carbon::now()->format('YmdHis') . '.zip';
 
         Zipper::make($zip)->add($files)->close();
