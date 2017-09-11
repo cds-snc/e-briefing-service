@@ -39,11 +39,4 @@ class TripDaysController extends Controller
 
         return redirect()->route('trips.days.index', $trip)->with('success', 'Day added!');
     }
-
-    public function destroy(Trip $trip, Day $day)
-    {
-        $day->delete();
-
-        return redirect()->back()->with('Day deleted');
-    }
 }
