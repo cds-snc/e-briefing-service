@@ -47,12 +47,12 @@ class TripController extends Controller
      */
     public function store(StoreTrip $request)
     {
-        $request->user()->trips()->create([
+        $trip = $request->user()->trips()->create([
             'name' => $request->name,
             'description' => $request->description
         ]);
 
-        return redirect()->route('trips.index')->with('success', __('Trip created'));
+        return redirect()->route('trips.days.index', $trip)->with('success', __('Trip created.  Now you may add Days, People, Articles and Documents to your Trip.'));
     }
 
     /**
@@ -64,7 +64,7 @@ class TripController extends Controller
      */
     public function show(Trip $trip)
     {
-        return view('trips.view', [
+        return view('trips.edit', [
             'trip' => $trip
         ]);
     }
@@ -97,7 +97,7 @@ class TripController extends Controller
             'description' => $request->description
         ]);
 
-        return redirect()->route('trips.index')->with('success', __('Trip updated'));
+        return redirect()->back()->with('success', __('Trip updated'));
     }
 
     /**

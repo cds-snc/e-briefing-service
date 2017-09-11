@@ -29,12 +29,6 @@
                     <tr>
                         <td>{{ $trip->name }}</td>
                         <td class="has-text-right">
-                            <a href="{{ route('trips.edit', $trip) }}" class="button">
-                                <span class="icon">
-                                    <i class="fa fa-edit"></i>
-                                </span>
-                                <span>{{ __('Edit') }}</span>
-                            </a>
                             <a href="{{ route('trips.days.index', $trip) }}" class="button">
                                 <span class="icon">
                                     <i class="fa fa-cogs"></i>
