@@ -43,29 +43,24 @@
                 There are no Days added to this Trip yet!
             @endunless
 
-            <div class="days">
+            <table class="table">
+                <tr>
+                    <th>Day</th>
+                    <th>Date</th>
+                    <th></th>
+                </tr>
                 @foreach($days as $day)
-                    <div class="day">
-                        <div class="card">
-                            <div class="card-content">
-                                <h3 class="title is-3">{{ $day->name }}</h3>
-                                <p class="title is-5">{{ $day->date }}</p>
-                            </div>
-                            <footer class="card-footer">
-                                <div class="card-footer-item">
-                                    <a href="{{ route('days.events.index', $day) }}" class="button is-link badge" data-badge="{{ $day->events->count() }}">Itinerary</a>
-                                </div>
-                                <div class="card-footer-item">
-                                    <a href="{{ route('days.edit', $day) }}" class="button is-link">Edit</a>
-                                </div>
-                                <div class="card-footer-item">
-                                    <a href="#" class="button is-link delete-item" data-id="{{ $day->id }}">Delete</a>
-                                </div>
-                            </footer>
-                        </div>
-                    </div>
+                    <tr>
+                        <td>{{ $day->name }}</td>
+                        <td>{{ $day->date }}</td>
+                        <td class="has-text-right">
+                            <a href="{{ route('days.edit', $day) }}" class="button is-default">Edit</a>
+                            <a href="{{ route('days.events.index', $day) }}" class="button is-default">Itinerary</a>
+                            <a href="#" class="button is-danger delete-item" data-id="{{ $day->id }}">Delete</a>
+                        </td>
+                    </tr>
                 @endforeach
-            </div>
+            </table>
         </div>
     </div>
 
