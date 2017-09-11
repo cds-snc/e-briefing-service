@@ -20,8 +20,10 @@ class TripController extends Controller
      */
     public function index()
     {
+        $trips = request()->user()->is_admin ? Trip::all() : request()->user()->trips;
+
         return view('trips.index', [
-            'trips' => Trip::all()
+            'trips' => $trips
         ]);
     }
 
@@ -45,7 +47,7 @@ class TripController extends Controller
      */
     public function store(StoreTrip $request)
     {
-        Trip::create([
+        $request->user()->trips()->create([
             'name' => $request->name,
             'description' => $request->description
         ]);

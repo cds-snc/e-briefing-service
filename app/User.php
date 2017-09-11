@@ -26,4 +26,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function trips()
+    {
+        return $this->hasMany(Trip::class, 'created_by_id');
+    }
 }
