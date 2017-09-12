@@ -11,6 +11,7 @@ use Spatie\PdfToImage\Pdf;
 class Document extends Model implements Sortable
 {
     protected $guarded = [];
+    protected $touches = ['trip'];
 
     use SortableTrait;
 

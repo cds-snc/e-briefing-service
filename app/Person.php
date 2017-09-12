@@ -8,6 +8,7 @@ class Person extends Model
 {
     protected $guarded = [];
     protected $appends = ['name', 'image_url', 'body_html'];
+    protected $touches = ['trip'];
 
     public function trip()
     {

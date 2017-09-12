@@ -10,6 +10,7 @@ class Article extends Model implements Sortable
 {
     protected $guarded = [];
     protected $appends = ['body_html'];
+    protected $touches = ['trip'];
 
     use SortableTrait;
 
