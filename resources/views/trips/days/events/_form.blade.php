@@ -1,5 +1,5 @@
 <div class="field">
-    <label class="label" for="title">{{ __('Title') }}</label>
+    <label class="label" for="title">{{ __('Title') }} (required)</label>
     <div class="control">
         <input type="text" class="input" name="title" id="title" value="{{ old('title', $event->title) }}">
     </div>
@@ -13,7 +13,7 @@
 </div>
 
 <div class="field">
-    <label class="label" for="time_from">{{ __('Time from') }}</label>
+    <label class="label" for="time_from">{{ __('Time from') }} (required)</label>
     <div class="control">
         <input type="time" class="input" name="time_from" id="time_from" value="{{ old('time_from', $event->time_from) }}">
     </div>
@@ -27,7 +27,7 @@
 </div>
 
 <div class="field">
-    <label class="label" for="location_name">{{ __('Location name') }}</label>
+    <label class="label" for="location_name">{{ __('Location name') }} (required)</label>
     <div class="control">
         <input type="text" class="input" name="location_name" id="location_name" value="{{ old('location_name', $event->location_name) }}">
     </div>

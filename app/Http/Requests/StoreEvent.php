@@ -25,7 +25,7 @@ class StoreEvent extends FormRequest
     {
         return [
             'title' => 'required',
-            'time_from' => 'required', // validate time format?
+            'time_from' => 'required',
             'location_name' => 'required'
         ];
     }

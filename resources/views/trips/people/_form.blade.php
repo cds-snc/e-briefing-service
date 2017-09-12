@@ -1,11 +1,11 @@
 <div class="field">
-    <label class="label" for="first_name">{{ __('First name') }}</label>
+    <label class="label" for="first_name">{{ __('First name') }} (required)</label>
     <p class="control">
         <input type="text" class="input" name="first_name" id="first_name" value="{{ old('first_name', $person->first_name) }}">
     </p>
 </div>
 <div class="field">
-    <label class="label" for="last_name">{{ __('Last name') }}</label>
+    <label class="label" for="last_name">{{ __('Last name') }} (required)</label>
     <p class="control">
         <input type="text" class="input" name="last_name" id="last_name" value="{{ old('last_name', $person->last_name) }}">
     </p>
