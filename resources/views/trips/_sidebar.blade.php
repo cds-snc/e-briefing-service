@@ -7,7 +7,7 @@
             <li><a href="{{ route('trips.show', $trip) }}">Trip</a></li>
             <li><a href="{{ route('trips.days.index', $trip) }}">Itinerary</a></li>
             <li><a href="{{ route('trips.people.index', $trip) }}">People</a></li>
-            <li><a href="{{ route('trips.articles.index', $trip) }}">Articles</a></li>
+            <li><a href="{{ route('trips.articles.index', $trip) }}">My Trip</a></li>
             <li><a href="{{ route('trips.documents.index', $trip) }}">Documents</a></li>
         </ul>
         @if(auth()->user()->id == $trip->creator->id)

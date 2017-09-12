@@ -30,7 +30,7 @@
         @endpush
 
         <div class="column">
-            <h1 class="title">{{ $trip->name }} Articles
+            <h1 class="title">{{ $trip->name }} "My Trip"
                 <a href="{{ route('trips.articles.create', $trip) }}" class="is-size-6">
                     <span class="icon">
                         <i class="fa fa-plus-circle"></i>
