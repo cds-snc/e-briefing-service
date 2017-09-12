@@ -3,7 +3,7 @@
 @section('content')
     <div class="columns">
         @push('nav-menu')
-            @include('trips._sidebar', ['trip' => $trip])
+            @include('trips._sidebar', ['trip' => $person->trip])
         @endpush
 
         <div class="column">
@@ -11,7 +11,7 @@
 
             @include('layouts.flash')
 
-            <form action="{{ route('trips.people.update', ['trip' => $trip, 'person' => $person]) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('people.update', ['person' => $person]) }}" method="POST" enctype="multipart/form-data">
                 {{ method_field('PUT') }}
                 {{ csrf_field() }}
 

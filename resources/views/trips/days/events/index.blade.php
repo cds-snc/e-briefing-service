@@ -4,7 +4,8 @@
 
 <script>
     $('document').ready(function () {
-        $('.delete-item').click(function () {
+        $('.delete-item').click(function (e) {
+            e.preventDefault();
             $('#delete_form')[0].action = $('#delete_form')[0].action.replace('__id', $(this).data('id'));
             $('#delete_modal').addClass('is-active');
         });
@@ -62,7 +63,7 @@
 
                         <a href="{{ route('events.show', ['event' => $event]) }}" class="button is-default">Manage</a>
 
-                        <a href="#" class="button is-danger delete-item" data-id="{{ $event->id }}">Delete</a>
+                        <a href="" class="button is-danger delete-item" data-id="{{ $event->id }}">Delete</a>
                     </div>
                 </div>
             @endforeach

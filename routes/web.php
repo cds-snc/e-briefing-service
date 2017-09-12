@@ -28,7 +28,10 @@ Route::resource('days', 'DayController', ['only' => [
     'edit', 'update', 'destroy'
 ]]);
 
-Route::resource('trips.people', 'TripPeopleController');
+Route::resource('trips.people', 'TripPeopleController', ['only' => [
+    'index', 'create', 'store'
+]]);
+
 Route::resource('trips.days', 'TripDaysController');
 Route::resource('trips.articles', 'TripArticlesController');
 Route::resource('trips.documents', 'TripDocumentsController');
@@ -37,6 +40,10 @@ Route::resource('days.events', 'DayEventsController');
 
 Route::resource('events', 'EventController', ['only' => [
     'show', 'edit', 'update', 'destroy'
+]]);
+
+Route::resource('people', 'PeopleController', ['only' => [
+    'destroy', 'edit', 'update'
 ]]);
 
 Route::put('events/{event}/participants', ['as' => 'events.participants.add', 'uses' => 'EventParticipantsController@add']);
