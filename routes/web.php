@@ -24,28 +24,61 @@ Route::resource('trips', 'TripController');
 
 Route::post('trips/{trip}/generate', ['as' => 'trips.generate', 'uses' => 'GenerateTripPackage']);
 
+/*
+ * Days
+ */
 Route::resource('days', 'DayController', ['only' => [
     'edit', 'update', 'destroy'
+]]);
+
+Route::resource('trips.days', 'TripDaysController', ['only' => [
+    'index', 'create', 'store'
+]]);
+
+/*
+ * People
+ */
+Route::resource('people', 'PeopleController', ['only' => [
+    'destroy', 'edit', 'update'
 ]]);
 
 Route::resource('trips.people', 'TripPeopleController', ['only' => [
     'index', 'create', 'store'
 ]]);
 
-Route::resource('trips.days', 'TripDaysController');
-Route::resource('trips.articles', 'TripArticlesController');
-Route::resource('trips.documents', 'TripDocumentsController');
+/*
+ * Documents
+ */
+Route::resource('documents', 'DocumentsController', ['only' => [
+    'edit', 'update', 'destroy'
+]]);
+
+Route::resource('trips.documents', 'TripDocumentsController', ['only' => [
+    'index', 'create', 'store'
+]]);
 
 Route::get('documents/{document}/preview', 'DocumentPreviewController');
 
-Route::resource('days.events', 'DayEventsController');
-
-Route::resource('events', 'EventController', ['only' => [
+/*
+ * Articles
+ */
+Route::resource('articles', 'ArticlesController', ['only' => [
     'show', 'edit', 'update', 'destroy'
 ]]);
 
-Route::resource('people', 'PeopleController', ['only' => [
-    'destroy', 'edit', 'update'
+Route::resource('trips.articles', 'TripArticlesController', ['only' => [
+    'index', 'create', 'store'
+]]);
+
+/*
+ * Events
+ */
+Route::resource('days.events', 'DayEventsController', ['only' => [
+    'index', 'create', 'store'
+]]);
+
+Route::resource('events', 'EventController', ['only' => [
+    'show', 'edit', 'update', 'destroy'
 ]]);
 
 Route::put('events/{event}/participants', ['as' => 'events.participants.add', 'uses' => 'EventParticipantsController@add']);

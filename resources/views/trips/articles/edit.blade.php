@@ -11,7 +11,7 @@
 
             @include('layouts.flash')
 
-            <form action="{{ route('trips.articles.update', ['trip' => $trip, 'article' => $article]) }}" method="POST">
+            <form action="{{ route('articles.update', $article) }}" method="POST">
                 {{ method_field('PUT') }}
                 {{ csrf_field() }}
                 @include('trips.articles._form')

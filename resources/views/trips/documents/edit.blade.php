@@ -11,7 +11,7 @@
 
             @include('layouts.flash')
 
-            <form action="{{ route('trips.documents.update', ['trip' => $trip, 'document' => $document]) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('documents.update', $document) }}" method="POST" enctype="multipart/form-data">
                 {{ method_field('PUT') }}
                 {{ csrf_field() }}
 
