@@ -2232,11 +2232,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['name', 'id', 'contents'],
@@ -32608,17 +32603,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "markdown-editor"
   }, [_c('div', {
     staticClass: "markdown-editor-header"
-  }, [_vm._v("You can use Markdown.\n        "), _c('span', {
+  }, [_vm._v("Style using "), _c('a', {
+    attrs: {
+      "href": "https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet",
+      "target": "_blank"
+    }
+  }, [_vm._v("Markdown")]), _vm._v(" "), _c('span', {
     staticClass: "markdown-editor-options"
-  }, [_vm._m(0), _vm._v(" "), (!_vm.preview) ? _c('a', {
+  }, [(!_vm.preview) ? _c('a', {
     on: {
       "click": _vm.showPreview
     }
-  }, [_vm._m(1), _vm._v(" Preview\n            ")]) : _vm._e(), _vm._v(" "), (_vm.preview) ? _c('a', {
+  }, [_vm._m(0), _vm._v(" Preview\n            ")]) : _vm._e(), _vm._v(" "), (_vm.preview) ? _c('a', {
     on: {
       "click": _vm.hidePreview
     }
-  }, [_vm._m(2), _vm._v(" Cancel\n            ")]) : _vm._e()])]), _vm._v(" "), (_vm.preview) ? _c('div', {
+  }, [_vm._m(1), _vm._v(" Cancel\n            ")]) : _vm._e()])]), _vm._v(" "), (_vm.preview) ? _c('div', {
     staticClass: "markdown-editor-preview"
   }, [_c('div', {
     domProps: {
@@ -32635,16 +32635,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v(_vm._s(_vm.contents))])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_c('span', {
-    staticClass: "icon is-small"
-  }, [_c('i', {
-    staticClass: "fa fa-question-circle"
-  })]), _vm._v(" Help\n            ")])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('span', {
     staticClass: "icon is-small"
   }, [_c('i', {

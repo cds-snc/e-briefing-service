@@ -1,12 +1,7 @@
 <template>
     <div class="markdown-editor">
-        <div class="markdown-editor-header">You can use Markdown.
+        <div class="markdown-editor-header">Style using <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">Markdown</a>
             <span class="markdown-editor-options">
-                <a href="#">
-                    <span class="icon is-small">
-                        <i class="fa fa-question-circle"></i>
-                    </span> Help
-                </a>
                 <a @click="showPreview" v-if="!preview">
                     <span class="icon is-small">
                         <i class="fa fa-eye"></i>
