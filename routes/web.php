@@ -36,6 +36,8 @@ Route::resource('trips.days', 'TripDaysController');
 Route::resource('trips.articles', 'TripArticlesController');
 Route::resource('trips.documents', 'TripDocumentsController');
 
+Route::get('documents/{document}/preview', 'DocumentPreviewController');
+
 Route::resource('days.events', 'DayEventsController');
 
 Route::resource('events', 'EventController', ['only' => [
