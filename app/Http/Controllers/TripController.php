@@ -47,7 +47,7 @@ class TripController extends Controller
      */
     public function store(StoreTrip $request)
     {
-        $trip = $request->user()->trips()->create([
+        $trip = $request->user()->myTrips()->create([
             'name' => $request->name,
             'description' => $request->description
         ]);
