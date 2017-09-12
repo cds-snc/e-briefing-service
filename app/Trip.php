@@ -27,4 +27,14 @@ class Trip extends Model
     {
         return $this->hasMany(Document::class);
     }
+
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'created_by_id');
+    }
+
+    public function collaborators()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

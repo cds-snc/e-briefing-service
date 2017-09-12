@@ -81,6 +81,16 @@ Route::resource('events', 'EventController', ['only' => [
     'show', 'edit', 'update', 'destroy'
 ]]);
 
+/*
+ * Collaborators
+ */
+Route::resource('trips.collaborators', 'TripCollaboratorsController', ['only' => [
+    'index'
+]]);
+
+Route::put('trips/{trip}/collaborators', ['as' => 'trips.collaborators.add', 'uses' => 'TripCollaboratorsController@add']);
+
+
 Route::put('events/{event}/participants', ['as' => 'events.participants.add', 'uses' => 'EventParticipantsController@add']);
 Route::get('events/{event}/participants/create', ['as' => 'events.participants.create', 'uses' => 'EventParticipantsController@create']);
 Route::post('events/{event}/participants', ['as' => 'events.participants.store', 'uses' => 'EventParticipantsController@store']);

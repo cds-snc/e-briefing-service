@@ -25,8 +25,18 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function trips()
+    public function myTrips()
     {
         return $this->hasMany(Trip::class, 'created_by_id');
+    }
+
+    public function otherTrips()
+    {
+        return $this->belongsToMany(Trip::class);
+    }
+
+    public function getTripsAttribute()
+    {
+        return $this->myTrips->merge($this->otherTrips);
     }
 }
