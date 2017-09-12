@@ -45,21 +45,25 @@
                 There are no Documents added to this Trip yet!
             @endunless
 
-            @foreach($documents as $document)
-                <div class="card">
-                    <div class="card-content">
-                        <h3 class="title is-3">{{ $document->name }}
-                            @if($document->is_protected)
-                                <span class="icon">
-                                    <i class="fa fa-lock"></i>
-                                </span>
-                            @endif
-                        </h3>
-                        <a href="{{ route('documents.edit', $document) }}" class="button is-default">Edit</a>
-
-                        <a href="" class="button is-danger delete-item" data-id="{{ $document->id }}">Delete</a>
-                    </div>
-                </div>
+            @foreach($documentsByType as $type => $documents)
+                <h2>{{ $type }}</h2>
+                <table class="table">
+                    @foreach($documents as $document)
+                        <tr>
+                            <td>{{ $document->name }}
+                                @if($document->is_protected)
+                                    <span class="icon">
+                                        <i class="fa fa-lock"></i>
+                                    </span>
+                                @endif
+                            </td>
+                            <td class="has-text-right">
+                                <a href="{{ route('documents.edit', $document) }}" class="button is-default">Edit</a>
+                                <a href="" class="button is-danger delete-item" data-id="{{ $document->id }}">Delete</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </table>
             @endforeach
         </div>
     </div>

@@ -23,7 +23,7 @@ class TripDocumentsController extends Controller
     {
         return view('trips.documents.index', [
             'trip' => $trip,
-            'documents' => $trip->documents
+            'documentsByType' => $trip->documents->groupBy('document_type')
         ]);
     }
 
