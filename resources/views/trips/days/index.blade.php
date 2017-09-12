@@ -44,24 +44,26 @@
                 There are no Days added to this Trip yet!
             @endunless
 
-            <table class="table">
-                <tr>
-                    <th>Day</th>
-                    <th>Date</th>
-                    <th></th>
-                </tr>
-                @foreach($days as $day)
+            @if($trip->days->count())
+                <table class="table">
                     <tr>
-                        <td>{{ $day->name }}</td>
-                        <td>{{ $day->date }}</td>
-                        <td class="has-text-right">
-                            <a href="{{ route('days.edit', $day) }}" class="button is-default">Edit</a>
-                            <a href="{{ route('days.events.index', $day) }}" class="button is-default">Itinerary</a>
-                            <a href="" class="button is-danger delete-item" data-id="{{ $day->id }}">Delete</a>
-                        </td>
+                        <th>Day</th>
+                        <th>Date</th>
+                        <th></th>
                     </tr>
-                @endforeach
-            </table>
+                    @foreach($days as $day)
+                        <tr>
+                            <td>{{ $day->name }}</td>
+                            <td>{{ $day->date }}</td>
+                            <td class="has-text-right">
+                                <a href="{{ route('days.edit', $day) }}" class="button is-default">Edit</a>
+                                <a href="{{ route('days.events.index', $day) }}" class="button is-default">Itinerary</a>
+                                <a href="" class="button is-danger delete-item" data-id="{{ $day->id }}">Delete</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </table>
+            @endif
         </div>
     </div>
 
