@@ -57,7 +57,7 @@
                             <td>{{ $day->date }}</td>
                             <td class="has-text-right">
                                 <a href="{{ route('days.edit', $day) }}" class="button is-default">Edit</a>
-                                <a href="{{ route('days.events.index', $day) }}" class="button is-default">Itinerary</a>
+                                <a href="{{ route('days.events.index', $day) }}" class="button is-default">Schedule</a>
                                 <a href="" class="button is-danger delete-item" data-id="{{ $day->id }}">Delete</a>
                             </td>
                         </tr>

@@ -33,7 +33,7 @@ class DayEventsController extends Controller
 
     public function store(Day $day, StoreEvent $request)
     {
-        $day->events()->create([
+        $event = $day->events()->create([
             'title' => $request->title,
             'type' => $request->type,
             'time_from' => $request->time_from,
@@ -46,7 +46,7 @@ class DayEventsController extends Controller
             'is_meal' => $request->has('is_meal')
         ]);
 
-        return redirect()->route('days.events.index', $day)->with('success', 'Event saved!');
+        return redirect()->route('events.show', $event)->with('success', 'Event created!');
     }
 
 

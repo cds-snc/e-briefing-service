@@ -18,7 +18,7 @@ class EventDocumentsController extends Controller
     {
         $event->documents()->attach(request()->document);
 
-        return redirect()->back()->with('Document added!');
+        return redirect()->back()->with('success', 'Document added!');
     }
 
     public function create(Event $event)

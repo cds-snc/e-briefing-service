@@ -18,7 +18,7 @@ class EventContactsController extends Controller
     {
         $event->people()->attach(request()->person, ['is_contact' => 1]);
 
-        return redirect()->back()->with('Contact added!');
+        return redirect()->back()->with('success', 'Contact added!');
     }
 
     public function create(Event $event)
