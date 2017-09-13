@@ -30,40 +30,24 @@
                     </p>
                 </div>
 
-                <div class="box">
-                    <article class="media">
-                        <div class="media-left">
-                            <figure class="image is-128x128">
-                                <img src="http://bulma.io/images/placeholders/128x128.png" alt="Image">
-                            </figure>
-                        </div>
-                        <div class="media-content">
-                            {{ $document->name }}
-                            <div class="pull-right">
-                                <a href="" class="button">View</a>
-                                <a href="" class="button">Remove</a>
-                            </div>
-                        </div>
-                    </article>
+                <strong>Document file (PDF only)</strong>
+                <div class="file has-name">
+                    <label class="file-label">
+                        <input class="file-input" type="file" name="file" id="file">
+                        <span class="file-cta">
+                            <span class="file-icon">
+                                <i class="fa fa-upload"></i>
+                            </span>
+                            <span class="file-label">
+                                Choose a file...
+                            </span>
+                        </span>
+                        <span class="file-name" id="file-name">
+                            ...
+                        </span>
+                    </label>
                 </div>
-
-                <div class="field">
-                    <p class="control">
-                        <input type="file" name="file" id="file">
-                    </p>
-                    <p class="help">* Selecting a new file will replace the existing file</p>
-                </div>
-
-                <div class="field">
-                    <p class="control">
-                        <label class="checkbox">
-                            {{ Form::checkbox('is_protected', 1, $document->is_protected) }}
-                            Contains protected information
-                        </label>
-                    </p>
-                    <p class="help">* Protected information cannot be synced to devices remotely</p>
-                </div>
-
+                <p class="help">* Selecting a new file will replace the existing file</p>
 
                 <button type="submit" class="button is-primary">Submit</button>
             </form>

@@ -11,13 +11,3 @@
         <markdown-textarea name="body" id="body" contents="{{ old('body', $article->body) }}"></markdown-textarea>
     </p>
 </div>
-
-<div class="field">
-    <p class="control">
-        <label class="checkbox">
-            {{ Form::checkbox('is_protected', 1, $article->is_protected) }}
-            Contains protected information
-        </label>
-    </p>
-    <p class="help">* Protected information cannot be synced to devices remotely</p>
-</div>
