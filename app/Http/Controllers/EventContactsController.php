@@ -16,6 +16,8 @@ class EventContactsController extends Controller
 
     public function add(Event $event)
     {
+        $this->authorize('manage', $event->trip);
+
         $event->people()->attach(request()->person, ['is_contact' => 1]);
 
         return redirect()->back()->with('success', 'Contact added!');
@@ -23,6 +25,8 @@ class EventContactsController extends Controller
 
     public function create(Event $event)
     {
+        $this->authorize('manage', $event->trip);
+
         return view('trips.days.events.contacts.create', [
             'event' => $event,
             'person' => new Person()
@@ -31,6 +35,8 @@ class EventContactsController extends Controller
 
     public function store(Event $event, StorePerson $request)
     {
+        $this->authorize('manage', $event->trip);
+        
         $trip = $event->trip;
 
         $person = $trip->people()->create([

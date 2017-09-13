@@ -16,6 +16,8 @@ class TripDaysController extends Controller
 
     public function index(Trip $trip)
     {
+        $this->authorize('manage', $trip);
+
         return view('trips.days.index', [
             'trip' => $trip,
             'days' => $trip->days()->orderBy('date')->get()
@@ -24,6 +26,8 @@ class TripDaysController extends Controller
 
     public function create(Trip $trip)
     {
+        $this->authorize('manage', $trip);
+
         return view('trips.days.create', [
             'trip' => $trip,
             'day' => new Day()
@@ -32,6 +36,8 @@ class TripDaysController extends Controller
 
     public function store(Trip $trip, StoreDay $request)
     {
+        $this->authorize('manage', $trip);
+        
         $trip->days()->create([
             'name' => $request->name,
             'date' => $request->date

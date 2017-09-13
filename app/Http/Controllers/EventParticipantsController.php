@@ -17,6 +17,8 @@ class EventParticipantsController extends Controller
     
     public function add(Event $event)
     {
+        $this->authorize('manage', $event->trip);
+
         $event->people()->attach(request()->person, ['is_participant' => 1]);
 
         return redirect()->back()->with('success', 'Participant added!');
@@ -24,6 +26,8 @@ class EventParticipantsController extends Controller
 
     public function create(Event $event)
     {
+        $this->authorize('manage', $event->trip);
+
         return view('trips.days.events.participants.create', [
             'event' => $event,
             'person' => new Person()
@@ -32,6 +36,8 @@ class EventParticipantsController extends Controller
 
     public function store(Event $event, StorePerson $request)
     {
+        $this->authorize('manage', $event->trip);
+        
         $trip = $event->trip;
 
         $person = $trip->people()->create([

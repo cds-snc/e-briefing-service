@@ -64,6 +64,8 @@ class TripController extends Controller
      */
     public function show(Trip $trip)
     {
+        $this->authorize('manage', $trip);
+
         return view('trips.edit', [
             'trip' => $trip
         ]);
@@ -77,6 +79,8 @@ class TripController extends Controller
      */
     public function edit(Trip $trip)
     {
+        $this->authorize('manage', $trip);
+
         return view('trips.edit', [
             'trip' => $trip
         ]);
@@ -92,6 +96,8 @@ class TripController extends Controller
      */
     public function update(StoreTrip $request, Trip $trip)
     {
+        $this->authorize('manage', $trip);
+
         $trip->update([
             'name' => $request->name,
             'description' => $request->description
@@ -108,6 +114,8 @@ class TripController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->authorize('manage', $trip);
+
+        
     }
 }

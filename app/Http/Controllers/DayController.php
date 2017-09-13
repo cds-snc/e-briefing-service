@@ -15,6 +15,8 @@ class DayController extends Controller
 
     public function edit(Day $day)
     {
+        $this->authorize('manage', $day->trip);
+
         return view('trips.days.edit', [
             'day' => $day
         ]);
@@ -22,6 +24,8 @@ class DayController extends Controller
 
     public function update(Day $day, StoreDay $request)
     {
+        $this->authorize('manage', $day->trip);
+
         $day->update([
             'name' => $request->name,
             'date' => $request->date
@@ -32,6 +36,8 @@ class DayController extends Controller
 
     public function destroy(Day $day)
     {
+        $this->authorize('manage', $day->trip);
+        
         $day->delete();
 
         return redirect()->route('trips.days.index', $day->trip)->with('success', 'Day deleted');

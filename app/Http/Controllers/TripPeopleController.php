@@ -22,6 +22,8 @@ class TripPeopleController extends Controller
      */
     public function index(Trip $trip)
     {
+        $this->authorize('manage', $trip);
+
         return view('trips.people.index', [
             'trip' => $trip,
             'people' => $trip->people
@@ -35,6 +37,8 @@ class TripPeopleController extends Controller
      */
     public function create(Trip $trip)
     {
+        $this->authorize('manage', $trip);
+
         return view('trips.people.create', [
             'trip' => $trip,
             'person' => new Person()
@@ -50,6 +54,8 @@ class TripPeopleController extends Controller
      */
     public function store(Trip $trip, StorePerson $request)
     {
+        $this->authorize('manage', $trip);
+        
         $person = $trip->people()->create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,

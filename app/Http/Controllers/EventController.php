@@ -15,6 +15,8 @@ class EventController extends Controller
 
     public function show(Event $event)
     {
+        $this->authorize('manage', $event->trip);
+
         return view('trips.days.events.show', [
             'event' => $event,
             'available_contacts' => $event->available_contacts,
@@ -26,6 +28,8 @@ class EventController extends Controller
 
     public function edit(Event $event)
     {
+        $this->authorize('manage', $event->trip);
+
         return view('trips.days.events.edit', [
             'event' => $event,
             'people' => $event->trip->people->pluck('name', 'id')
@@ -34,6 +38,8 @@ class EventController extends Controller
 
     public function update(Event $event, StoreEvent $request)
     {
+        $this->authorize('manage', $event->trip);
+
         $event->update([
             'title' => $request->title,
             'type' => $request->type,
@@ -52,6 +58,8 @@ class EventController extends Controller
 
     public function destroy(Event $event)
     {
+        $this->authorize('manage', $event->trip);
+        
         $event->delete();
 
         return redirect()->back()->with('success', 'Event deleted');

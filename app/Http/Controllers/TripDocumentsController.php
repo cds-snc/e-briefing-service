@@ -21,6 +21,8 @@ class TripDocumentsController extends Controller
      */
     public function index(Trip $trip)
     {
+        $this->authorize('manage', $trip);
+
         return view('trips.documents.index', [
             'trip' => $trip,
             'documentsByType' => $trip->documents->groupBy('document_type')
@@ -34,6 +36,8 @@ class TripDocumentsController extends Controller
      */
     public function create(Trip $trip)
     {
+        $this->authorize('manage', $trip);
+
         return view('trips.documents.create', [
             'trip' => $trip,
             'document' => new Document()
@@ -49,6 +53,8 @@ class TripDocumentsController extends Controller
      */
     public function store(Trip $trip, StoreDocument $request)
     {
+        $this->authorize('manage', $trip);
+        
         $file = $request->file('file');
         $filename = $file->store('documents', 'public');
 

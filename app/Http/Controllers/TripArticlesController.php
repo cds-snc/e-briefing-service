@@ -22,6 +22,8 @@ class TripArticlesController extends Controller
      */
     public function index(Trip $trip)
     {
+        $this->authorize('manage', $trip);
+
         return view('trips.articles.index', [
             'trip' => $trip,
             'articles' => $trip->articles
@@ -36,6 +38,8 @@ class TripArticlesController extends Controller
      */
     public function create(Trip $trip)
     {
+        $this->authorize('manage', $trip);
+
         return view('trips.articles.create', [
             'trip' => $trip,
             'article' => new Article()
@@ -51,6 +55,8 @@ class TripArticlesController extends Controller
      */
     public function store(Trip $trip, StoreArticle $request)
     {
+        $this->authorize('manage', $trip);
+        
         $trip->articles()->create([
             'title' => $request->title,
             'body' => $request->body,

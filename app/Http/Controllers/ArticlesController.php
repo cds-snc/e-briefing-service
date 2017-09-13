@@ -16,7 +16,7 @@ class ArticlesController extends Controller
      */
     public function show(Article $article)
     {
-        //
+        $this->authorize('manage', $article->trip);
     }
 
     /**
@@ -27,6 +27,8 @@ class ArticlesController extends Controller
      */
     public function edit(Article $article)
     {
+        $this->authorize('manage', $article->trip);
+
         return view('trips.articles.edit', [
             'trip' => $article->trip,
             'article' => $article
@@ -42,6 +44,8 @@ class ArticlesController extends Controller
      */
     public function update(Article $article, StoreArticle $request)
     {
+        $this->authorize('manage', $article->trip);
+
         $article->update([
             'title' => $request->title,
             'body' => $request->body,
@@ -59,6 +63,8 @@ class ArticlesController extends Controller
      */
     public function destroy(Article $article)
     {
+        $this->authorize('manage', $article->trip);
+        
         $article->delete();
 
         return redirect()->back()->with('success', 'Article deleted');

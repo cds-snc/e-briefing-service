@@ -11,11 +11,15 @@ class PeopleController extends Controller
 
     public function edit(Person $person)
     {
+        $this->authorize('manage', $person->trip);
+
         return view('trips.people.edit', compact(['trip', 'person']));
     }
 
     public function update(Person $person, StorePerson $request)
     {
+        $this->authorize('manage', $person->trip);
+
         $person->update([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
@@ -39,6 +43,8 @@ class PeopleController extends Controller
 
     public function destroy(Person $person)
     {
+        $this->authorize('manage', $person->trip);
+        
         $person->delete();
 
         return redirect()->back()->with('success', 'Person deleted');

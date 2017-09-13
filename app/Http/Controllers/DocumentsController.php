@@ -15,6 +15,8 @@ class DocumentsController extends Controller
      */
     public function edit(Document $document)
     {
+        $this->authorize('manage', $document->trip);
+
         return view('trips.documents.edit', [
             'trip' => $document->trip,
             'document' => $document
@@ -31,6 +33,8 @@ class DocumentsController extends Controller
      */
     public function update(Document $document, Request $request)
     {
+        $this->authorize('manage', $document->trip);
+
         $document->update([
             'name' => $request->name,
             'document_type' => $request->document_type,
@@ -58,6 +62,8 @@ class DocumentsController extends Controller
      */
     public function destroy(Document $document)
     {
+        $this->authorize('manage', $document->trip);
+        
         $document->delete();
 
         return redirect()->back()->with('success', 'Document deleted');
