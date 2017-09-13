@@ -20,6 +20,8 @@ class UserController extends Controller
      */
     public function index()
     {
+        $this->authorize('manage-system');
+
         return view('users.index', [
             'users' => User::all()
         ]);
@@ -32,6 +34,8 @@ class UserController extends Controller
      */
     public function create()
     {
+        $this->authorize('manage-system');
+
         return view('users.create');
     }
 
@@ -43,6 +47,8 @@ class UserController extends Controller
      */
     public function store(StoreUser $request)
     {
+        $this->authorize('manage-system');
+        
         User::create([
             'name' => $request->name,
             'email' => $request->email,
