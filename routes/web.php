@@ -15,6 +15,9 @@ Route::get('/', 'HomeController@index');
 
 Auth::routes();
 
+Route::get('password/change', ['as' => 'password.edit', 'uses' => 'Auth\ChangePasswordController@edit']);
+Route::post('password/change', ['as' => 'password.update', 'uses' => 'Auth\ChangePasswordController@update']);
+
 Route::resource('users', 'UserController');
 Route::resource('trips', 'TripController');
 

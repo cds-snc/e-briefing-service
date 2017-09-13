@@ -25,6 +25,9 @@
                         </p>
                     </header>
                     <div class="card-content">
+
+                        @include('layouts.flash')
+
                         <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                             {{ csrf_field() }}
 

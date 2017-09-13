@@ -24,25 +24,37 @@
                     </a>
                 </div>
                 <div class="navbar-menu">
-                    <a href="{{ route('trips.index') }}" class="navbar-item">Trips</a>
-                    @if(Auth::user()->is_admin)
-                        <a href="{{ route('users.index') }}" class="navbar-item">Users</a>
+                    @if(Auth::user())
+                        <a href="{{ route('trips.index') }}" class="navbar-item">Trips</a>
+                        @if(Auth::user()->is_admin)
+                            <a href="{{ route('users.index') }}" class="navbar-item">Users</a>
+                        @endif
                     @endif
 
                     <div class="navbar-end">
                         @if (Auth::guest())
                             <a class="navbar-item" href="{{ url('/login') }}">Login</a>
-                            <a class="navbar-item" href="{{ url('/register') }}">Register</a>
                         @else
-                            <a class="navbar-item" href="{{ url('/logout') }}"
-                               onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
-                                Logout
-                            </a>
+                            <div class="navbar-item has-dropdown is-hoverable">
+                                <a class="navbar-link">
+                                    <div class="icon"><i class="fa fa-user"></i></div>
+                                    {{ auth()->user()->name }}
+                                </a>
+                                <div class="navbar-dropdown is-right">
+                                    <a href="{{ route('password.edit') }}" class="navbar-item">
+                                        Change Password
+                                    </a>
+                                    <a class="navbar-item" href="{{ url('/logout') }}"
+                                       onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                        Logout
+                                    </a>
 
-                            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
+                                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </div> 
+                            </div>                            
                         @endif
                     </div>
                 </div>
