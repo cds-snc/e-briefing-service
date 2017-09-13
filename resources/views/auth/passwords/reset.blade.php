@@ -22,38 +22,29 @@
                         <input type="hidden" name="token" value="{{ $token }}">
 
                         <div class="content">
-                            <div class="control is-horizontal">
-                                <div class="control-label">
-                                    <label class="label">E-mail</label>
-                                </div>
-                                <div class="control is-fullwidth">
+                            <div class="field">
+                                <label class="label">E-mail</label>
+                                <div class="control">
                                     <input name="email" class="input{{ $errors->has('email') ? ' is-danger' : '' }}" type="email" value="{{ old('email') }}" required autofocus>
                                 </div>
                             </div>
 
-                            <div class="control is-horizontal">
-                                <div class="control-label">
-                                    <label class="label">Password</label>
-                                </div>
-                                <div class="control is-fullwidth">
+                            <div class="field">
+                                <label class="label">Password</label>
+                                <div class="control">
                                     <input name="password" class="input{{ $errors->has('password') ? ' is-danger' : '' }}" type="password" value="{{ old('password') }}" required>
                                 </div>
                             </div>
 
-                            <div class="control is-horizontal">
-                                <div class="control-label">
-                                    <label class="label">Confirm password</label>
-                                </div>
-                                <div class="control is-fullwidth">
+                            <div class="field">
+                                <label class="label">Confirm password</label>
+                                <div class="control">
                                     <input name="password_confirmation" class="input{{ $errors->has('password-confirm') ? ' is-danger' : '' }}" type="password" value="{{ old('password-confirm') }}" required>
                                 </div>
                             </div>
 
-                            <div class="control is-horizontal">
-                                <div class="control-label">
-                                    <!-- spacer -->
-                                </div>
-                                <div class="control is-fullwidth">
+                            <div class="field">
+                                <div class="control">
                                     <button class="button is-primary">Reset password</button>
                                 </div>
                             </div>

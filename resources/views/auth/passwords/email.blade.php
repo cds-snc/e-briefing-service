@@ -20,20 +20,15 @@
                         {{ csrf_field() }}
 
                         <div class="content">
-                            <div class="control is-horizontal">
-                                <div class="control-label">
-                                    <label class="label">{{ __('Email') }}</label>
-                                </div>
-                                <div class="control is-fullwidth">
+                            <div class="field">
+                                <label class="label">{{ __('Email') }}</label>
+                                <div class="control">
                                     <input name="email" class="input{{ $errors->has('email') ? ' is-danger' : '' }}" type="email" value="{{ old('email') }}" required autofocus>
                                 </div>
                             </div>
 
-                            <div class="control is-horizontal">
-                                <div class="control-label">
-                                    <!-- spacer -->
-                                </div>
-                                <div class="control is-fullwidth">
+                            <div class="field">
+                                <div class="control">
                                     <button class="button is-primary">{{ __('Send Password Reset Link') }}</button>
                                 </div>
                             </div>
