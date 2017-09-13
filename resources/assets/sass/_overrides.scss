@@ -3,65 +3,6 @@
   background-image: linear-gradient(180deg, lighten($color, 8%) 0%, $color 60%, darken($color, 4%) 100%);
 }
 
-.box {
-  box-shadow: 0 0 0 1px $border;
-}
-
-.button {
-  @each $name, $pair in $colors {
-    $color: nth($pair, 1);
-    $color-invert: nth($pair, 2);
-
-    &.is-#{$name} {
-      &:not(.is-outlined):not(.is-inverted) {
-        @include btn-shadow($color);
-      }
-    }
-  }
-}
-
-.button,
-.control.has-icons-left .icon,
-.control.has-icons-right .icon,
-.input,
-.pagination-ellipsis,
-.pagination-link,
-.pagination-next,
-.pagination-previous,
-.select,
-.select select,
-.textarea {
-  height: 2.375em;
-}
-
-.input,
-.textarea {
-  box-shadow: none;
-}
-
-.card {
-  box-shadow: 0 0 0 1px $border;
-  background-color: $white-bis;
-
-  .card-header {
-    box-shadow: none;
-    border-bottom: 1px solid $border;
-  }
-}
-
-.notification {
-  @each $name, $pair in $colors {
-    $color: nth($pair, 1);
-    $color-invert: nth($pair, 2);
-
-    &.is-#{$name} {
-      background-color: rgba($color, .1);
-      color: $color;
-      border: 1px solid rgba($color, .2);
-    }
-  }
-}
-
 .nav {
   background-color: $primary;
   @include btn-shadow($primary);
