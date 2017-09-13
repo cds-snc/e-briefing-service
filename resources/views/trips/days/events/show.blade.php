@@ -55,9 +55,21 @@
                     @endunless
 
                     @foreach($event->contacts as $contact)
-                        <p><strong>{{ $contact->name }}</strong><br>
-                        {{ $contact->title }}<br>
-                        {{ $contact->telephone }}</p>
+                        <div class="columns">
+                            <div class="column is-three-quarters">
+                                <p><strong>{{ $contact->name }}</strong><br>
+                                    {{ $contact->title }}<br>
+                                    {{ $contact->telephone }}</p>
+                            </div>
+                            <div class="column has-text-right">
+                                <form action="{{ route('events.contacts.remove', ['event' => $event, 'person' => $contact]) }}" method="post">
+                                    {{ method_field('DELETE') }}
+                                    {{ csrf_field() }}
+                                    <button class="button is-link">Remove</button>
+                                </form>
+                            </div>
+                        </div>
+
                     @endforeach
 
                     <h3 class="title">Participants
@@ -81,6 +93,13 @@
                                 {{ $participant->name }}<br>
                                 {{ $participant->title }}
                             </div>
+                            <div class="column has-text-right">
+                                <form action="{{ route('events.participants.remove', ['event' => $event, 'person' => $participant]) }}" method="post">
+                                    {{ method_field('DELETE') }}
+                                    {{ csrf_field() }}
+                                    <button class="button is-link">Remove</button>
+                                </form>
+                            </div>
                         </div>
                     @endforeach
 
@@ -95,17 +114,27 @@
                     @endunless
 
                     @if($event->documents->count())
-                        <ul>
-                            @foreach($event->documents as $document)
-                                <li>{{ $document->name }}
+
+                        @foreach($event->documents as $document)
+                            <div class="columns">
+                                <div class="column is-three-quarters">
+                                    {{ $document->name }}
                                     @if($document->is_protected)
                                         <span class="icon">
-                                            <i class="fa fa-lock"></i>
-                                        </span>
+                                        <i class="fa fa-lock"></i>
+                                    </span>
                                     @endif
-                                </li>
-                            @endforeach
-                        </ul>
+                                </div>
+                                <div class="column">
+                                    <form action="{{ route('events.documents.remove', ['event' => $event, 'document' => $document]) }}" method="post">
+                                        {{ method_field('DELETE') }}
+                                        {{ csrf_field() }}
+                                        <button class="button is-link">Remove</button>
+                                    </form>
+                                </div>
+                            </div>
+                        @endforeach
+
                     @endif
                 </div>
             </div>

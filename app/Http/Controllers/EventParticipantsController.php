@@ -62,4 +62,11 @@ class EventParticipantsController extends Controller
 
         return redirect()->route('events.show', $event)->with('success', 'Participant added!');
     }
+
+    public function remove(Event $event, Person $person)
+    {
+        $event->participants()->detach($person);
+
+        return redirect()->back()->with('success', 'Person removed');
+    }
 }

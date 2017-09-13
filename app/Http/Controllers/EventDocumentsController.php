@@ -53,4 +53,11 @@ class EventDocumentsController extends Controller
 
         return redirect()->route('events.show', $event)->with('success', 'Document uploaded!');
     }
+
+    public function remove(Event $event, Document $document)
+    {
+        $event->documents()->detach($document);
+
+        return redirect()->back()->with('success', 'Document removed');
+    }
 }

@@ -61,4 +61,11 @@ class EventContactsController extends Controller
 
         return redirect()->route('events.show', $event)->with('success', 'Contact added!');
     }
+
+    public function remove(Event $event, Person $person)
+    {
+        $event->contacts()->detach($person);
+
+        return redirect()->back()->with('success', 'Person removed');
+    }
 }
