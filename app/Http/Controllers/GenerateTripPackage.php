@@ -6,7 +6,7 @@ use App\Article;
 use App\Day;
 use App\Document;
 use App\Event;
-use App\PackageGenerator;
+use App\TripPackage;
 use App\Person;
 use App\Trip;
 use Carbon\Carbon;
@@ -16,11 +16,11 @@ use Illuminate\Support\Facades\Storage;
 class GenerateTripPackage extends Controller
 {
     /**
-     * @var PackageGenerator
+     * @var TripPackage
      */
     private $package;
 
-    public function __construct(PackageGenerator $package)
+    public function __construct(TripPackage $package)
     {
         $this->package = $package;
     }

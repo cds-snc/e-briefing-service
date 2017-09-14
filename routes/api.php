@@ -19,6 +19,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 */
 
+Route::get('/trips/{trip}/download', 'Api\DownloadTripPackageController');
+
+
 Route::get('/user', function() {
     return \App\Trip::with('days', 'days.events', 'days.events.documents', 'days.events.people', 'articles', 'people')->first();
 });

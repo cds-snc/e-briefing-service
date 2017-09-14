@@ -3,17 +3,16 @@
 namespace App;
 
 
-use Carbon\Carbon;
 use Chumper\Zipper\Facades\Zipper;
 use Illuminate\Support\Facades\Storage;
 
-class PackageGenerator
+class TripPackage
 {
     var $storage_path;
 
     public function generate(Trip $trip)
     {
-        $this->storage_path = 'packages/trips/' . $trip->id;
+        $this->storage_path = 'public/packages/trips/' . $trip->id;
 
         // Delete old package
         Storage::deleteDirectory($this->storage_path);
@@ -26,7 +25,10 @@ class PackageGenerator
 
     protected function generateTripJson(Trip $trip)
     {
-        $trip_json = Trip::with('days')->find($trip->id)->toJson();
+        $trip = Trip::with('days')->find($trip->id);
+        $trip->update_url = url('/api/trips/' . $trip->id . '/download');
+
+        $trip_json = $trip->toJson();
         Storage::put($this->storage_path . '/trip.json', $trip_json);
 
         $days_json = $trip->days()->orderBy('date')->get()->toJson();
