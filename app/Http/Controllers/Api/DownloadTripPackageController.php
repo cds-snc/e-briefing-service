@@ -13,7 +13,7 @@ class DownloadTripPackageController extends Controller
 
     public function __invoke(Trip $trip)
     {
-        $this->storage_path = 'packages/trips/' . $trip->id;
+        $this->storage_path = 'public/packages/trips/' . $trip->id;
 
         if (!Storage::exists($this->storage_path . '/package.zip')) {
             return response()->json([
