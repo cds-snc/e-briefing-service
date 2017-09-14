@@ -37,13 +37,17 @@
 
 <script>
     export default {
-        props: ['active', 'people', 'event', 'csrf_token'],
+        props: ['active', 'event', 'csrf_token'],
         mounted() {
-
+            axios.get('/api/events/' + this.event + '/participants/available')
+                .then((response) => {
+                    this.people = response.data;
+                });
         },
         data() {
             return {
-                isActive: this.active || false
+                isActive: this.active || false,
+                people: []
             }
         },
         watch: {

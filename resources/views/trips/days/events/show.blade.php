@@ -142,21 +142,18 @@
     </div>
     <add-participant-modal
             :active.sync="isParticipantModalActive"
-            :people="{{ $available_participants }}"
             :event="'{{ $event->id }}'"
             :csrf_token="'{{ csrf_token() }}'">
     </add-participant-modal>
 
     <add-contact-modal
             :active.sync="isContactModalActive"
-            :people="{{ $available_contacts }}"
             :event="'{{ $event->id }}'"
             :csrf_token="'{{ csrf_token() }}'">
     </add-contact-modal>
 
     <add-document-modal
             :active.sync="isDocumentModalActive"
-            :documents="{{ $available_documents }}"
             :event="'{{ $event->id }}'"
             :csrf_token="'{{ csrf_token() }}'">
     </add-document-modal>

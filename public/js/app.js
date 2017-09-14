@@ -1965,13 +1965,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['active', 'people', 'event', 'csrf_token'],
+    props: ['active', 'event', 'csrf_token'],
     mounted: function mounted() {
-        console.log(this.post_url);
+        var _this = this;
+
+        axios.get('/api/events/' + this.event + '/contacts/available').then(function (response) {
+            _this.people = response.data;
+        });
     },
     data: function data() {
         return {
-            isActive: this.active || false
+            isActive: this.active || false,
+            people: []
         };
     },
 
@@ -2051,8 +2056,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['active', 'documents', 'event', 'csrf_token'],
-    mounted: function mounted() {},
+    props: ['active', 'event', 'csrf_token'],
+    mounted: function mounted() {
+        var _this = this;
+
+        axios.get('/api/events/' + this.event + '/documents/available').then(function (response) {
+            _this.documents = response.data;
+        });
+    },
     data: function data() {
         return {
             isActive: this.active || false
@@ -2135,11 +2146,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['active', 'people', 'event', 'csrf_token'],
-    mounted: function mounted() {},
+    props: ['active', 'event', 'csrf_token'],
+    mounted: function mounted() {
+        var _this = this;
+
+        axios.get('/api/events/' + this.event + '/participants/available').then(function (response) {
+            _this.people = response.data;
+        });
+    },
     data: function data() {
         return {
-            isActive: this.active || false
+            isActive: this.active || false,
+            people: []
         };
     },
 

@@ -37,9 +37,12 @@
 
 <script>
     export default {
-        props: ['active', 'documents', 'event', 'csrf_token'],
+        props: ['active', 'event', 'csrf_token'],
         mounted() {
-
+            axios.get('/api/events/' + this.event + '/documents/available')
+                .then((response) => {
+                    this.documents = response.data;
+                });
         },
         data() {
             return {
