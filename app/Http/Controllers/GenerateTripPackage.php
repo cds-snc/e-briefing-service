@@ -29,8 +29,10 @@ class GenerateTripPackage extends Controller
     {
         ini_set('max_execution_time', 60);
 
-        $this->package->generate($trip);
+        $package = $this->package->generate($trip);
 
-        return redirect()->back()->with('success', 'Package Generated.  You can now sync the data to device by using the link in the app.');
+        return response()->download($package);
+
+        // return redirect()->back()->with('success', 'Package Generated.  You can now sync the data to device by using the link in the app.');
     }
 }
