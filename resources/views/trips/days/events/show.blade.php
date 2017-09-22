@@ -86,7 +86,7 @@
                         <div class="columns">
                             @if($participant->image)
                                 <div class="column is-2">
-                                    <img src="{{ url('storage/' . $person->image) }}" class="person-photo-fluid">
+                                    <img src="{{ url('storage/' . $participant->image) }}" class="person-photo-fluid">
                                 </div>
                             @endif
                             <div class="column">
