@@ -49,8 +49,18 @@ class TripController extends Controller
     {
         $trip = $request->user()->myTrips()->create([
             'name' => $request->name,
-            'description' => $request->description
+            'description' => $request->description,
         ]);
+
+        if($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = $file->store('photos', 'public');
+
+            $trip->update([
+                'image' => $filename
+            ]);
+        }
+
 
         return redirect()->route('trips.days.index', $trip)->with('success', __('Trip created.  Now you may add Days, People, Articles and Documents to your Trip.'));
     }
@@ -102,6 +112,15 @@ class TripController extends Controller
             'name' => $request->name,
             'description' => $request->description
         ]);
+
+        if($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = $file->store('photos', 'public');
+
+            $trip->update([
+                'image' => $filename
+            ]);
+        }
 
         return redirect()->back()->with('success', __('Trip updated'));
     }
