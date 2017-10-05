@@ -1,5 +1,18 @@
 @extends('layouts.app')
 
+@push('scripts')
+
+<script>
+    var file = document.getElementById('file');
+    file.onchange = function() {
+        if(file.files.length > 0) {
+            document.getElementById('file-name').innerHTML = file.files[0].name;
+        }
+    }
+</script>
+
+@endpush
+
 @section('content')
     <div class="container">
         <h1 class="title">{{ __('Create a Trip') }}</h1>

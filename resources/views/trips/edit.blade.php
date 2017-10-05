@@ -1,5 +1,18 @@
 @extends('layouts.app')
 
+@push('scripts')
+
+<script>
+    var file = document.getElementById('file');
+    file.onchange = function() {
+        if(file.files.length > 0) {
+            document.getElementById('file-name').innerHTML = file.files[0].name;
+        }
+    }
+</script>
+
+@endpush
+
 @section('content')
     <div class="columns">
         @push('nav-menu')
@@ -13,6 +26,15 @@
             <form action="{{ route('trips.update', $trip) }}" method="POST" enctype="multipart/form-data">
                 {{ method_field('PUT') }}
                 {{ csrf_field() }}
+                
+                @include('trips._form')
+
+                 @if($trip->image)
+                    <label class="label">Current Photo</label>
+                    <div class="column is-3">
+                        <img src="{{ url('storage/' . $trip->image) }}">
+                    </div>
+                @endif
 
                 <div class="file has-name">
                     <label class="file-label">
@@ -22,7 +44,7 @@
                                 <i class="fa fa-upload"></i>
                             </span>
                             <span class="file-label">
-                                Choose a photo...
+                                Choose a new photo...
                             </span>
                         </span>
                         <span class="file-name" id="file-name">
@@ -31,8 +53,6 @@
                     </label>
                 </div>
                 <br />
-                
-                @include('trips._form')
 
                 <button type="submit" class="button is-primary">Submit</button>
             </form>

@@ -34,6 +34,10 @@ class TripPackage
         $days_json = $trip->days()->orderBy('date')->get()->toJson();
         Storage::put($this->storage_path . '/days.json', $days_json);
 
+        if ($trip->image) {
+            Storage::copy('public/' . $trip->image, $this->storage_path . '/assets/' . $trip->image);
+        }
+
         foreach ($trip->days as $day)
         {
             $this->generateDayJson($day);
