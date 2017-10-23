@@ -21,6 +21,7 @@
             <thead>
                 <tr>
                     <th>{{ __('Trip name') }}</th>
+                    <th>{{ __('Owner') }}</th>
                     <th></th>
                 </tr>
             </thead>
@@ -28,6 +29,7 @@
                 @foreach($trips as $trip)
                     <tr>
                         <td>{{ $trip->name }}</td>
+                        <td>{{ $trip->creator->name }}</td>
                         <td class="has-text-right">
                             <a href="{{ route('trips.days.index', $trip) }}" class="button">
                                 <span class="icon">
