@@ -109,10 +109,10 @@ class TripController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Trip $trip
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Trip $trip)
     {
         $this->authorize('manage', $trip);
 
