@@ -118,7 +118,7 @@
                         @foreach($event->documents as $document)
                             <div class="columns">
                                 <div class="column is-three-quarters">
-                                    {{ $document->name }}
+                                    <a href="{{ url($document->file) }}">{{ $document->name }}</a>
                                     @if($document->is_protected)
                                         <span class="icon">
                                         <i class="fa fa-lock"></i>
