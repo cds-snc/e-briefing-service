@@ -2,6 +2,15 @@
 
 This is a [Laravel](https://laravel.com/)-based backend to the [E-Briefing App](https://github.com/cds-snc/e-briefing-app).
 
+Create and manage e-Briefing "binders" that can be installed on a mobile device and updated remotely through the e-Briefing App
+
+This service allows you to: 
+- Create a daily itinerary detailing meetings and events and include relevant documents, contacts, and biographies of participants
+- Upload supporting documents and reference materials
+- Create biographies of members of the delegation and people they will meet
+- Free-form "articles" allow you to include any other information that doesn't fit anywhere else
+- Collaborate with other members of your team
+
 ## Running this project
 
 ### Clone and then install
