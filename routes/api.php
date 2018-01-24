@@ -13,13 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-/*
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-*/
-
-Route::get('/trips/{trip}/download', 'Api\DownloadTripPackageController');
+Route::get('/trips/{trip}/download', 'Api\DownloadTripPackageController')->middleware('auth:api');
 
 Route::get('/events/{event}/participants/available', function (\App\Event $event) {
     return $event->available_participants;
