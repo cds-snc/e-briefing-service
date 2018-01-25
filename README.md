@@ -11,6 +11,12 @@ This service allows you to:
 - Free-form "articles" allow you to include any other information that doesn't fit anywhere else
 - Collaborate with other members of your team
 
+## Heads up!
+
+This project is still early in development and some of the processes involved in running, installing, and loading data into
+the app are meant to be temporary work-arounds until a more full-featured service can be rolled out.  See more details about
+this over in the [E-Briefing App repository](https://github.com/cds-snc/e-briefing-app).
+
 ## Running this project
 
 ### Clone and then install
