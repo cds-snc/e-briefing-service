@@ -17,6 +17,8 @@ This project is still early in development and some of the processes involved in
 the app are meant to be temporary work-arounds until a more full-featured service can be rolled out.  See more details about
 this over in the [E-Briefing App repository](https://github.com/cds-snc/e-briefing-app).
 
+See also this [TODO](TODO.md) list for some of the features we think will be needed for this to become a more complete product.
+
 ## Running this project
 
 ### Clone and then install
