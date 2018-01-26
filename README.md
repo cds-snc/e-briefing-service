@@ -14,7 +14,7 @@ This service allows you to:
 ## Heads up!
 
 This project is still early in development and some of the processes involved in running, installing, and loading data into
-the app are meant to be temporary work-arounds until a more full-featured service can be rolled out.  See more details about
+the app are meant to be temporary work-arounds until a more full-featured product can be developed.  See more details about
 this over in the [E-Briefing App repository](https://github.com/cds-snc/e-briefing-app).
 
 See also this [TODO](TODO.md) list for some of the features we think will be needed for this to be a more complete product.
