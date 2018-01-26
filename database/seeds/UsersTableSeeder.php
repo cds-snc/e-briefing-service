@@ -17,6 +17,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'Admin User',
             'email' => 'admin@test.com',
             'password' => bcrypt('secret'),
+            'api_token' => str_random(60),
             'is_admin' => 1
         ]);
     }
