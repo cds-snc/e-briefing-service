@@ -55,3 +55,8 @@ This will create an Administrator account with the following credentials:
 
 - username: admin@test.com
 - password: secret
+
+## API Key and Remote Sync
+
+For the Remote Sync feature, the E-Briefing App must provide an Authorization token to access the package download
+route.  This token is stored in the `users` table associated with the main admin user.
