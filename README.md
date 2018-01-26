@@ -31,6 +31,9 @@ composer install
 
 ### Setup your environment file and configure your database
 
+The default settings in .env.example should work with the included docker-compose.yml settings.  You may need to change
+these if you're running some other way.
+
 ```
 cp .env.example .env
 ```
@@ -43,7 +46,8 @@ You can then bring up a dev environment using the docker-compose file included b
 docker-compose up
 ```
 
-Or you may want to try [Laravel Valet](https://laravel.com/docs/5.5/valet) or [Laravel Homestead](https://laravel.com/docs/5.5/homestead)
+Alternatively, you may want to try [Laravel Valet](https://laravel.com/docs/5.5/valet) or 
+[Laravel Homestead](https://laravel.com/docs/5.5/homestead)
 
 ### Migrate and seed the database
 
