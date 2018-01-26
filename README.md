@@ -14,8 +14,8 @@ This service allows you to:
 ## Heads up!
 
 This project is still early in development and some of the processes involved in running, installing, and loading data into
-the app are meant to be temporary work-arounds until a more full-featured product can be developed.  See more details about
-this over in the [E-Briefing App repository](https://github.com/cds-snc/e-briefing-app).
+the app are meant to be temporary work-arounds until more of this functionality can be fleshed out.  
+See more details about this over in the [E-Briefing App repository](https://github.com/cds-snc/e-briefing-app).
 
 See also this [TODO](TODO.md) list for some of the features we think will be needed for this to be a more complete product.
 
@@ -49,6 +49,7 @@ Or you may want to try [Laravel Valet](https://laravel.com/docs/5.5/valet) or [L
 
 ```
 php artisan migrate
+php artisan db:seed
 ```
 
 This will create an Administrator account with the following credentials:
@@ -60,3 +61,11 @@ This will create an Administrator account with the following credentials:
 
 For the Remote Sync feature, the E-Briefing App must provide an Authorization token to access the package download
 route.  This token is stored in the `users` table associated with the main admin user.
+
+## Contributing
+
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on how you can pitch in, and the process for submitting pull requests.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.txt) file for details
