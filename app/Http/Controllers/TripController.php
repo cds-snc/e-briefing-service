@@ -52,6 +52,10 @@ class TripController extends Controller
             'description' => $request->description
         ]);
 
+        $trip->update([
+          'code' => $trip->id
+        ]);
+
         return redirect()->route('trips.days.index', $trip)->with('success', __('Trip created.  Now you may add Days, People, Articles and Documents to your Trip.'));
     }
 
