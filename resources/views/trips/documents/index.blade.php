@@ -50,7 +50,7 @@
                 <table class="table">
                     @foreach($documents as $document)
                         <tr>
-                            <td><a href="{{ url($document->file) }}">{{ $document->name }}</a>
+                            <td><a href="{{ url('storage/' . $document->file) }}">{{ $document->name }}</a>
                                 @if($document->is_protected)
                                     <span class="icon">
                                         <i class="fa fa-lock"></i>
