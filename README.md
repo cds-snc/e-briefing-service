@@ -75,25 +75,25 @@ This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.t
 
 -------------------------------------------------------------------
 
-# Service de séance d’information électronique
+# Service de breffage électronique
 
-Il s’agit d’un système principal basé sur [Laravel](https://laravel.com/) pour l’application de séance d’information électronique.
+Il s’agit d’un système principal basé sur [Laravel](https://laravel.com/) pour l’application de breffage électronique.
 
-Créez et gérez des « reliures » de séance d’information électronique qui peuvent être installées sur un appareil mobile et mises à jour à distance au moyen de l’application de séance d’information électronique.
+Créez et gérez des cartables de breffage électronique qui peuvent être installés sur un appareil mobile et mis à jour à distance au moyen de l’application de breffage électronique.
 
 Ce service vous permet de :
 
 *   créer un itinéraire quotidien détaillant les réunions et les événements en plus d’incorporer les documents, les coordonnés et les biographies des participants pertinents;
-*   télécharger des documents de soutien et des documents de référence;
+*   télécharger des documents en appui et des documents de référence;
 *   créer les biographies des membres de la délégation et des personnes qu’ils rencontreront;
 *   les « articles » en format libre vous permettent d’inclure tout autre renseignement qui ne peut être placé dans les autres catégories;
 *   collaborer avec les autres membres de votre équipe.
 
 ## Aperçu
 
-Ce projet en est toujours aux premières étapes d’élaboration et certains des processus concernant le fonctionnement, l’installation et le téléchargement de données dans l’application sont des solutions de contournement temporaires jusqu’à ce que davantage de fonctions puissent être élaborées. Consultez d’autres renseignements à ce sujet dans le [répertoire E-Briefing App](https://github.com/cds-snc/e-briefing-app).
+Ce projet en est toujours aux premières étapes d’élaboration et certains des processus concernant le fonctionnement, l’installation et le téléchargement de données dans l’application sont des solutions temporaires jusqu’à ce que davantage de fonctions puissent être élaborées. Consultez d’autres renseignements à ce sujet dans le [répertoire Application de breffage électronique](https://github.com/cds-snc/e-briefing-app).
 
-Consultez également cette liste [TODO](TODO.md) pour connaître certaines caractéristiques que nous pensons qui vous seront utiles pour que ce produit soit plus complet.
+Consultez également cette liste [TODO](TODO.md) pour connaître certaines caractéristiques qui, selon nous, seront utiles pour que ce produit soit plus complet.
 
 ## Mise en œuvre de ce projet
 
@@ -123,7 +123,7 @@ docker-compose up
 
 Sinon, vous pourriez vouloir essayer [Laravel Valet](https://laravel.com/docs/5.5/valet) ou [Laravel Homestead](https://laravel.com/docs/5.5/homestead).
 
-### Effectuez la migration et peuplez la base de données
+### Effectuez la migration et remplissez la base de données
 
 ```
 php artisan migrate
@@ -135,9 +135,9 @@ Cette opération créera un compte d’administrateur ayant les justificatifs d�
 - nom d’utilisateur: admin@test.com
 - mot de passe: secret
 
-## Clé API et sync à distance
+## Clé API et synchronisation à distance
 
-Pour la caractéristique de synchronisation à distance, l’application E‑Briefing doit fournir un jeton d’autorisation pour accéder à la voie de téléchargement du progiciel. Ce jeton est entreposé dans la tablette `users` associée à l’utilisateur de l’administration principal.
+Pour la synchronisation à distance, l’application de breffage électronique doit fournir un jeton d’autorisation pour accéder à la voie de téléchargement du progiciel. Ce jeton est entreposé dans la tablette `users` associée à l’utilisateur de l’administration principale.
 
 ## Contribution
 
