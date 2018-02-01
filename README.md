@@ -91,7 +91,7 @@ Ce service vous permet de :
 
 ## Aperçu
 
-Ce projet en est toujours aux premières étapes d’élaboration et certains des processus concernant le fonctionnement, l’installation et le téléchargement de données dans l’application sont des solutions temporaires jusqu’à ce que davantage de fonctions puissent être élaborées. Consultez d’autres renseignements à ce sujet dans le [répertoire Application de breffage électronique](https://github.com/cds-snc/e-briefing-app).
+Ce projet en est toujours aux premières étapes d’élaboration et certains des processus concernant le fonctionnement, l’installation et le téléchargement de données dans l’application sont des solutions temporaires jusqu’à ce que davantage de fonctions puissent être élaborées. Consultez d’autres renseignements à ce sujet dans le [répertoire Application de breffage électronique](https://github.com/cds-snc/e-briefing-app#application-de-breffage-%C3%A9lectronique).
 
 Consultez également cette liste [TODO](TODO.md) pour connaître certaines caractéristiques qui, selon nous, seront utiles pour que ce produit soit plus complet.
 
