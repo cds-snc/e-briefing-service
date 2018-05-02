@@ -39,7 +39,7 @@
                                     {{ __('Manage Trip') }}
                                 </span>
                             </a>
-                            @can('manage-system')
+
                                 <form class="is-inline download-form" action="{{ route('trips.generate', $trip) }}" method="POST">
                                     {{ csrf_field() }}
                                     <button type="submit" class="button download-button">
@@ -51,7 +51,7 @@
                                         </span>
                                     </button>
                                 </form>
-                            @endcan
+                            
                         </td>
                     </tr>
                 @endforeach
