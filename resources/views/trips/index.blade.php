@@ -22,6 +22,7 @@
                 <tr>
                     <th>{{ __('Trip name') }}</th>
                     <th>{{ __('Owner') }}</th>
+                    <th>{{ __('Pages') }}</th>
                     <th></th>
                 </tr>
             </thead>
@@ -30,6 +31,7 @@
                     <tr>
                         <td>{{ $trip->name }}</td>
                         <td>{{ $trip->creator->name }}</td>
+                        <td>{{-- $trip->getPageCount() --}}</td>
                         <td class="has-text-right">
                             <a href="{{ route('trips.days.index', $trip) }}" class="button">
                                 <span class="icon">

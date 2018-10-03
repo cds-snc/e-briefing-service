@@ -37,4 +37,15 @@ class Trip extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+    public function getPageCount()
+    {
+        $count = 0;
+
+        foreach ($this->documents as $document) {
+            $count = $count + $document->getPageCount();
+        }
+
+        return $count;
+    }
 }

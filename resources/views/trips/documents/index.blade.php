@@ -57,6 +57,9 @@
                                     </span>
                                 @endif
                             </td>
+                            <td>
+                                {{ $document->getPageCount() }}
+                            </td>
                             <td class="has-text-right">
                                 <a href="{{ route('documents.edit', $document) }}" class="button is-default">Edit</a>
                                 <a href="" class="button is-danger delete-item" data-id="{{ $document->id }}">Delete</a>

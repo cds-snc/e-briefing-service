@@ -12,6 +12,7 @@
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0",
+        "smalot/pdfparser": "^0.12.0",
         "spatie/eloquent-sortable": "^3.3"
     },
     "require-dev": {

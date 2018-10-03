@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Smalot\PdfParser\Parser;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 use Spatie\PdfToImage\Pdf;
@@ -33,6 +34,18 @@ class Document extends Model implements Sortable
     public function documentType()
     {
         return $this->belongsTo(DocumentType::class);
+    }
+
+    public function getPageCount()
+    {
+        if (Storage::disk('public')->exists($this->file)) {
+            $parser = new Parser();
+            $pdf = $parser->parseFile(storage_path('app/public/' . $this->file));
+
+            //return count($pdf->getPages());
+        }
+
+        return null;
     }
 
     public function getPreviewImageAttribute()
